@@ -1,4 +1,4 @@
-#Codebuch Modedesigner*inen und Luxusmarken#
+###Codebuch Modedesigner*inen und Luxusmarken###
 Codebuch Stand 2023-06, aktualisiert 2023-06
 erstellt von Fashionistas (mj069@hdm-stuttgart.de)
 
