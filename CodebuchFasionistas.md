@@ -6,7 +6,7 @@ erstellt von Fashionistas (mj069@hdm-stuttgart.de)
 ## Inhalt
 - Edges.csv (Edgelist)
 - Nodes.csv (Nodelist)
-- Codebuch.md (Codierung der Datensätze)
+- CodebuchFashionistas.md (Codierung der Datensätze)
 
 
 
@@ -20,12 +20,12 @@ Das Netzwerk ist ein *gerichtetes Akteursnetzwerk*. Es wurden vier getrennte Fra
 1b) ARBEITEN SIE EXKLUSIV FÜR EINW RENNOMIERTE MARKE/ GAB ES WECHSEL?
 1c)WELCHEN RANG HAT DER/DIE DESIGNER*IN?
 
-Für das Modemarkennetzwerk *collaborations* wurde den Rängen des Designers ein Gewicht von 1-3 vergeben,  3 steht für Founder, 2 für Creative Director, und 1 für design assistant.
+Für das Modemarkennetzwerk *collaborations* wurde den Rängen des Designers ein Gewicht von 1-3 vergeben,  3 steht für Founder, 2 für Creative Director, und 1 für Design assistant.
 
 **Projektnetwerk Designerfakten**
-1)GIBT ES AUSSCGLAGGEBENDE FAKTEN ÜBER DIE DESIGNER*INNEN?
+1)GIBT ES AUSSCHLAGGEBENDE FAKTEN ÜBER DIE DESIGNER*INNEN?
 
-Für dieses Netzwerk recgerchierten wir Attribute wie Ausbildungsgrad, Sexualität, Jahrgang, Land der Tätigkeiten, Mentorenud Musen der Designer*innen. 
+Für dieses Netzwerk recherchierten wir Attribute wie Ausbildungsgrad, Sexualität, Alter, Land der Tätigkeiten, Mentoren und Musen der Designer*innen. 
 
 
 
@@ -53,21 +53,21 @@ Designerrang
 
 **scholar**
 Abschlussart des Designers 
-1 = *talent* : Der Designer hat bis auf seine kreative Ader keinen Abschluss.
-2 = *internship* : der Designer hatte eine Art Ausbildung bei einem Mentor.
-3 = *degree* Der Designer hat einen akademischen Abschluss.
+1 = *talent* : Der/Die Designer*in hat bis auf seine kreative Ader keinen Abschluss.
+2 = *internship* : Der/Die Designer*in hatte eine Art Ausbildung bei einem Mentor.
+3 = *degree* Der/Die Designer*in hat einen akademischen Abschluss.
 
 **sexuality**  
-1 = straight: Der Designer ist heterosexuell
-2 = notstraight: Der designer ist nocht heterosexuell     
+1 = straight: Der/Die Designer*in ist heterosexuell
+2 = notstraight: Der/Die Designer*in ist nicht heterosexuell     
 3 = NA: Die Sexualität ist nicht bekannt
 
 
 **transfer**
 
-1 = Der Designer hat die Marke ein mal gewechselt
-2 = der Designer hat die Marke zwei mal gewechselt
-3 = Die Marke wurde dre oder mehrmals gewechselt
+1 = Der/Die Designer*in hat die Marke ein mal gewechselt
+2 = Der/Die Designer*in hat die Marke zwei mal gewechselt
+3 = Die Marke wurde drei oder mehrmals gewechselt
 
 
 # NODE-Attribute  
@@ -93,10 +93,10 @@ Alter in natürlichen Zahlen.
 
 **age**   
 Bitte geben Sie Ihr Alter an:  
-1 = bis 20 Jahre    
-2 = 21 bis 22 Jahre    
-3 = 23 bis 24 Jahre  
-4 = 25 und älter  
+1 = 20-30 Jahre   
+2 = 31-40 Jahre    
+3 = 41-50 Jahre  
+4 = 50 und älter  
 
 
 **location** 
