@@ -16,13 +16,17 @@ Wir haben den Datensatz unter den Modedesigner*innen in der Luxusmarkenbranche e
 Das Netzwerk ist ein *gerichtetes Akteursnetzwerk*. Es wurden vier getrennte Fragen erhoben:
 
 **Projektnetzwerk Modemarken collaborations**
+
 1a) WIE SIND BEKANNTE MODEDESIGNER*INNEN MIT FASHION-BRANDS VERBUNDEN?
+
 1b) ARBEITEN SIE EXKLUSIV FÜR EINW RENNOMIERTE MARKE/ GAB ES WECHSEL?
-1c)WELCHEN RANG HAT DER/DIE DESIGNER*IN?
+
+1c) WELCHEN RANG HAT DER/DIE DESIGNER*IN?
 
 Für das Modemarkennetzwerk *collaborations* wurde den Rängen des Designers ein Gewicht von 1-3 vergeben,  3 steht für Founder, 2 für Creative Director, und 1 für Design assistant.
 
 **Projektnetwerk Designerfakten**
+
 1)GIBT ES AUSSCHLAGGEBENDE FAKTEN ÜBER DIE DESIGNER*INNEN?
 
 Für dieses Netzwerk recherchierten wir Attribute wie Ausbildungsgrad, Sexualität, Alter, Land der Tätigkeiten, Mentoren und Musen der Designer*innen. 
