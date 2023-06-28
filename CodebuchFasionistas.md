@@ -28,7 +28,7 @@ Für das Modemarkennetzwerk *collaborations* wurde den Rängen des Designers ein
 
 **Projektnetwerk Designerfakten**
 
-1) Gibt es ausschlaggebende Fakten über die Designer*innen?
+1)Gibt es ausschlaggebende Fakten über die Designer*innen?
 
 Für dieses Netzwerk recherchierten wir Attribute wie Ausbildungsgrad, Sexualität, Alter, Land der Tätigkeiten, Mentoren und Musen der Designer*innen. 
 
