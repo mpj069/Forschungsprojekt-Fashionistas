@@ -17,17 +17,18 @@ Das Netzwerk ist ein *gerichtetes Akteursnetzwerk*. Es wurden vier getrennte Fra
 
 **Projektnetzwerk Modemarken collaborations**
 
-1a) WIE SIND BEKANNTE MODEDESIGNER*INNEN MIT FASHION-BRANDS VERBUNDEN?
+1a) Wie sind bekannte Modedesigner*innen mit Fashion Brands verbunden?
 
-1b) ARBEITEN SIE EXKLUSIV FÜR EINW RENNOMIERTE MARKE/ GAB ES WECHSEL?
+1b)  Gab es einen Wechsel ? Arbeiten sie exklusiv für eine renomierte Marke?
 
-1c) WELCHEN RANG HAT DER/DIE DESIGNER*IN?
+1c) Welchen Rang hat der/die Designer*in ?
 
-Für das Modemarkennetzwerk *collaborations* wurde den Rängen des Designers ein Gewicht von 1-3 vergeben,  3 steht für Founder, 2 für Creative Director, und 1 für Design assistant.
+Für das Modemarkennetzwerk *collaborations* wurde den Rängen des Designers ein Gewicht von 1-3 vergeben,  3 steht für Founder, 2 für Creative Director, und 1 für Design assistant
+
 
 **Projektnetwerk Designerfakten**
 
-1)GIBT ES AUSSCHLAGGEBENDE FAKTEN ÜBER DIE DESIGNER*INNEN?
+1) Gibt es ausschlaggebende Fakten über die Designer*innen?
 
 Für dieses Netzwerk recherchierten wir Attribute wie Ausbildungsgrad, Sexualität, Alter, Land der Tätigkeiten, Mentoren und Musen der Designer*innen. 
 
@@ -95,12 +96,12 @@ Bitte geben Sie ihr Geschlecht an:
 **age_real**   
 Alter in natürlichen Zahlen.  
 
-**age**   
-Bitte geben Sie Ihr Alter an:  
-1 = 20-30 Jahre   
-2 = 31-40 Jahre    
-3 = 41-50 Jahre  
-4 = 50 und älter  
+**birthyear**   
+Die Generation des Knoten:  
+1 =    
+2 =     
+3 =   
+4 =   
 
 
 **location** 
