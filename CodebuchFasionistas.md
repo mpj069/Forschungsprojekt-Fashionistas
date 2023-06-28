@@ -42,7 +42,7 @@ Fehlende Werte werden nicht erfasst.
 
 **id**  
 (eindeutige Codierung des Knoten)   
-codiert von 1 bis 10, jede ID entspricht einem Designer. Knoten für die Musen (Models) werden noch erhoben. Hierbei untersuchen wir, ob die Musen zu der neuen Modemarke mit gewechselt sid.
+codiert von 1 bis 50 ( 10 Knoten pro Gruppenmitglied), jede ID entspricht einem Designer. Knoten für die Musen (Models) werden noch erhoben. Hierbei untersuchen wir, ob die Musen zu der neuen Modemarke mit gewechselt sid.
 
 **from**
 initiierender Knoten, in diesem Fall: Designer/in wechselte von einer zur anderen Marke.
