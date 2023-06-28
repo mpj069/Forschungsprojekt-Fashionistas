@@ -64,8 +64,9 @@ Abschlussart des Designers
 
 **sexuality**  
 1 = straight: Der/Die Designer*in ist heterosexuell
-2 = notstraight: Der/Die Designer*in ist nicht heterosexuell     
-3 = NA: Die Sexualität ist nicht bekannt
+2 = notstraight: Der/Die Designer*in ist nicht heterosexuell   
+3 = evtl.weitere Sexualität
+4 = NA: Die Sexualität ist nicht bekannt
 
 
 **transfer**
