@@ -4,7 +4,7 @@ erstellt von Fashionistas (mj069@hdm-stuttgart.de)
 
 
 ## Inhalt
-- Edges.csv (Edgelist)
+- Edges.csv (Edgelist) 
 - Nodes.csv (Nodelist)
 - CodebuchFashionistas.md (Codierung der Datensätze)
 
