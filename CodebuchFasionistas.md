@@ -44,9 +44,11 @@ Fehlende Werte werden nicht erfasst, und als N.A angegeben.
 
 
 **from**
+
 initiierender Knoten, in diesem Fall: Designer/in wechselte von einer zur anderen Marke.
 
 **to**
+
 erhaltender Knoten, in diesem Fall: Marke , für die ein/e Designer*in arbeitet.
 
 **weight**  
@@ -64,20 +66,24 @@ Designerrang innerhalb des Modelabels
 # NODE-Attribute  
   
 **id**  
+
 (eindeutige Codierung des Knoten )
 klare Codierung durch Abkürzung der Namen der Knoten, jede ID entspricht einem Designer. Knoten für die Musen (Models) werden noch erhoben. Hierbei untersuchen wir, ob die Musen zu der neuen Modemarke mit gewechselt sid.
 
 **name**
+
 voller Name
 
 
-**sex**    
+**sex** 
+
 1 = weiblich  
 2 = männlich  
 3 = divers
   
 
 **birthyear**   
+
 Geburtsjahr des Knotens  
 
 
@@ -92,12 +98,14 @@ JAP = Japan
 
 
 **type**
+
 1 = designer
 2 = brand
 3 =  muse
 
 
 **scholar**
+
 Abschlussart des Designers 
 
 1 = *talent* : Der/Die Designer*in hat bis auf seine kreative Ader keinen Abschluss.
@@ -106,6 +114,7 @@ Abschlussart des Designers
 
 
 **sexuality**  
+
 1 = heterosexual: Der/Die Designer*in ist heterosexuell
 2 = homosexual: Der/Die Designer*in ist homosexuell   
 3 = bisexual : Der/Die Designer*in ist bisexuell
@@ -114,6 +123,7 @@ Abschlussart des Designers
 
 
 **transfer**
+
 0 = Der/Die Designer*in hat von Anfang an ein eigenes Label gegründet.
 1 = Der/Die Designer*in hat die Marke ein mal gewechselt
 2 = Der/Die Designer*in hat die Marke zwei mal gewechselt
@@ -121,6 +131,7 @@ Abschlussart des Designers
 
 
 **value**
+
 Designervermögen/ Markenwert
 
 1 = 2-10 Mrd. Dollar
