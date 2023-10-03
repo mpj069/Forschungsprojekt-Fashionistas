@@ -95,6 +95,9 @@ IT = Italien
 F = Frankreich 
 GB = England
 JAP = Japan
+DR = Dominikanische Republik
+VEN = Venezuela
+BRA = Brasilien
 
 
 **type**
@@ -134,9 +137,10 @@ Abschlussart des Designers
 
 Designervermögen/ Markenwert
 
-1 = 2-10 Mrd. Dollar
-2 = 10- 50 Mrd. Dollar 
-3 = 50-100 Mrd. Dollar
+1 = unter 2 Mrd. Dollar
+2 = 2-10 Mrd. Dollar
+3 = 10-50 Mrd. Dollar
+4 = 50-100 Mrd. Dollar
 
 
 ##
