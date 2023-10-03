@@ -54,7 +54,7 @@ erhaltender Knoten, in diesem Fall: Marke , für die ein/e Designer*in arbeitet.
 **weight**  
 Designerrang innerhalb des Modelabels 
 3 = Founder
-2 = Creative Director
+2 = Creative Director or other Designer Role
 1 = Design Assistant
 
 
