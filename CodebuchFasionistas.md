@@ -35,7 +35,7 @@ F√ºr dieses Netzwerk recherchierten wir Attribute wie Ausbildungsgrad, Sexualit√
 
 
 
-**Umgang mit fehlgenden Werten**
+**N.A**
 Fehlende Werte werden nicht erfasst, und als N.A angegeben.
 
 
@@ -57,6 +57,18 @@ Designerrang innerhalb des Modelabels
 2 = Creative Director
 1 = Design Assistant
 
+
+**position**
+
+Designer*innen Rang innerhalb einer Brand
+
+1 = Design Assistant
+2 = Creative Director
+3 = Founder
+
+**year**
+
+Jahr, in dem der Wechsel stattfand.
 
 
 
@@ -87,7 +99,7 @@ voller Name
 Geburtsjahr des Knotens  
 
 
-**nationality**
+**main workplace**
 	
 D = Deutschland
 USA = Amerika
