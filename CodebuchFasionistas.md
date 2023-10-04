@@ -117,6 +117,7 @@ BRA = Brasilien
 1 = designer
 2 = brand
 3 =  muse
+4 = celebrity
 
 
 **scholar**
