@@ -51,12 +51,6 @@ initiierender Knoten, in diesem Fall: Designer/in wechselte von einer zur andere
 
 erhaltender Knoten, in diesem Fall: Marke , für die ein/e Designer*in arbeitet.
 
-**weight**  
-Designerrang innerhalb des Modelabels 
-3 = Founder
-2 = Creative Director or other Designer Role
-1 = Design Assistant
-
 
 **position**
 
@@ -125,8 +119,8 @@ BRA = Brasilien
 Abschlussart des Designers 
 
 1 = *talent* : Der/Die Designer*in hat bis auf seine kreative Ader keinen Abschluss.
-2 = *internship/work experience* : Der/Die Designer*in hatte eine Art Ausbildung bei einem Mentor.
-3 = *degree* Der/Die Designer*in hat einen akademischen Abschluss.
+2 = *internship/work experience* : Der/Die Designer*in hatte eine Art Ausbildung bei einem Mentor oder praktische Erfahrungen in der Modebranche gesammelt.
+3 = *degree* Der/Die Designer*in hat eine Modeschule oder vergleichbares besucht.
 
 
 **sexuality**  
@@ -140,7 +134,6 @@ Abschlussart des Designers
 
 **transfer**
 
-0 = Der/Die Designer*in hat von Anfang an ein eigenes Label gegründet.
 1 = Der/Die Designer*in hat die Marke ein mal gewechselt
 2 = Der/Die Designer*in hat die Marke zwei mal gewechselt
 3 = Die Marke wurde drei oder mehrmals gewechselt
