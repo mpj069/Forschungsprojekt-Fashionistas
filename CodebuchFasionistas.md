@@ -118,6 +118,7 @@ BRA = Brasilien
 2 = brand
 3 =  muse
 4 = celebrity
+5 = normaler mensch
 
 
 **scholar**
