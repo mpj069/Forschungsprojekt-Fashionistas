@@ -35,8 +35,8 @@ F√ºr dieses Netzwerk recherchierten wir Attribute wie Ausbildungsgrad, Sexualit√
 
 
 
-**N.A**
-Fehlende Werte werden nicht erfasst, und als N.A angegeben.
+**NA**
+Fehlende Werte werden nicht erfasst, und als NA angegeben.
 
 
 
