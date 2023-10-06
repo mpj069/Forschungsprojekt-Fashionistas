@@ -104,6 +104,7 @@ JAP = Japan
 DR = Dominikanische Republik
 VEN = Venezuela
 BRA = Brasilien
+WAL = Wales
 
 
 **type**
