@@ -133,7 +133,7 @@ Abschlussart des Designers
 
 
 **transfer**
-
+0 = Der/Die Deswigner*in hat direkt seine eigene Marke gegründet
 1 = Der/Die Designer*in hat die Marke ein mal gewechselt
 2 = Der/Die Designer*in hat die Marke zwei mal gewechselt
 3 = Die Marke wurde drei oder mehrmals gewechselt
