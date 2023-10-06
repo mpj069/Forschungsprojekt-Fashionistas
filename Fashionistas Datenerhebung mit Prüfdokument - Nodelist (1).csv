@@ -1,0 +1,139 @@
+id,name,sex,sexuality,birthyear,scholar,transfer,main workplace,value,type
+abloh,Virgil Abloh,2,1,1980,2,3,USA,1,1
+armani,Giorgio Armani,2,3,1934,2,3,IT,2,1
+audigier,Christian Audigier,2,1,1958,1,3,USA,1,1
+bailey,Christopher Bailey,2,2,1971,3,2,GB,1,1
+blazy,Matthieu Blazy,2,2,1984,3,3,FR,,1
+burch,Tory Burch,1,1,1966,3,3,USA,1,1
+burton,Sarah Burton,1,1,1974,3,1,GB,1,1
+cavalli,Roberto Cavalli,2,1,1940,3,1,IT,1,1
+chiuri,Maria Grazia Chiuri,1,1,1964,3,2,IT,1,1
+costa,Francisco Costa,2,2,1961,3,2,BRA,1,1
+dalmau,Custo Dalmau,2,2,1959,1,0,SP,1,1
+dolce,Domenico Dolce,2,2,1958,2,1,IT,1,1
+dominguez,Adolfo Dominguez,2,1,1950,3,0,SP,1,1
+etro,Veronica Etro,1,1,1974,3,1,IT,,1
+elkann,Lapo Elkann,2,1,1977,1,0,IT,1,1
+emanuel,David Emanuel,2,1,1952,3,1,WAL,1,1
+ferretti,Alberta Ferretti,1,1,1950,2,0,IT,1,1
+ford,Tom Ford,2,2,1961,3,1,USA,1,1
+frank,Paul Frank ,2,1,1967,3,0,USA,1,1
+gabbana,Stefano Gabbana,2,2,1962,2,1,IT,2,1
+galliano,John Galliano,2,2,1960,3,2,GB,1,1
+gianni,Frida Gianni,1,1,1972,3,1,IT,1,1
+gaultier,Jean P. Gaultier,2,2,1952,3,3,FR,1,1
+hardy,Don Ed Hardy,2,1,1945,1,0,USA,1,1
+herrera,Carolina Herrera,1,1,1939,2,1,VEN,1,1
+hilfiger,Tommy Hilfiger,2,1,1951,1,0,USA,1,1
+jacobs,Marc Jacobs,2,2,1963,3,1,USA,1,1
+jette,Jette Joop,1,1,1968,2,1,DE,1,1
+joop,Wolfgang Joop,2,3,1944,1,0,DE,1,1
+klein,Calvin Klein,2,3,1942,3,0,USA,1,1
+lacroix,Christian Lacroix,2,1,1951,1,3,FR,1,1
+lagerfeld,Karl Lagerfeld,2,2,1933,3,3,DE,1,1
+lauren,Ralph Lauren,2,2,1939,1,1,USA,2,1
+mugler,Thierry Mugler,2,2,1949,1,0,FR,1,1
+owens,Rick Owens,2,1,1962,3,1,USA,1,1
+plein,Philipp Plein,2,1,1978,1,3,DE,,
+queen,Alexander McQueen,2,2,1969,2,3,USA,1,1
+renta,Oscar De la Renta,2,1,1932,2,0,DR,1,1
+versace,Donatella Versace,1,1,1955,2,0,IT,1,1
+westwood,Vivienne Westwood,1,1,1941,3,0,GB,1,1
+williams,Pharell Williams,1,1,1973,1,1,USA,1,1
+yama,Yohji Yamamoto,2,1,1943,3,0,JAP,1,1
+ade la renta,Annette de la Renta,1,,,,,,,3
+bellucci,Monica Bellucci,1,,,,,,,3
+beyonce,Beyonce Knowles,1,,,,,,,3
+buendchen,Gisele Buendchen,1,,,,,,,3
+cameron,Dove Cameron,1,,,,,,,3
+coppola,Sofia Coppola,1,,,,,,,3
+delevinge,Cara Delevinge,1,,,,,,,3
+doillon,Lou Doillon,1,,,,,,,3
+ellis,Stella Ellis,1,,,,,,,3
+evangelista,Linda Evangelista,1,,,,,,,3
+gaga,Lady Gaga,1,,,,,,,3
+giabiconi,Baptiste Giabiconi,2,,,,,,,3
+hadid,Gigi Hadid,1,,,,,,,3
+hill,Lauryn Hill,1,,,,,,,3
+jenner,Kendall Jenner,1,,,,,,,3
+kahlo,Frida Kahlo,1,,,,,,,3
+kolibius,Felize Kolibius,1,,,,,,,3
+kroenig,Brad Kroenig,2,,,,,,,3
+lamy,Michele Lamy,1,,,,,,,3
+larson,Sarah Larson,1,,,,,,,3
+rlauren,Ricky Lauren,1,,,,,,,3
+mara,Rooney Mara,1,,,,,,,3
+madonna,Madonna,1,,,,,,,3
+moss,Kate Moss,1,,,,,,,3
+neilson,Annabelle Neilson,1,,,,,,,3
+seymour,Jane Seymour,1,,,,,,,3
+schields,Brooke Shields,1,,,,,,,3
+schiffer,Claudia Schiffer,1,,,,,,,3
+stockbridge,Sara Stockbridge,1,,,,,,,3
+towley,Mette Towley,1,,,,,,,3
+zendaya,Zendaya Coleman,1,,,,,,,3
+AD,Adolfo Dominguez,,,,,,,,2
+AF,Alberta Ferretti,,,,,,,,2
+AM,Alexander Mc Queen,,,,,,,1,2
+B,Balmain,,,,,,,2,2
+BB,Brooks Brothers,,,,,,,,2
+BBC,Billionaire Boys Club,,,,,,,1,2
+BU,Burberry,,,,,,,2,2
+BV,Bottega Veneta,,,,,,,1,2
+C,Chanel,,,,,,,3,2
+CA,Christian Audigier,,,,,,,1,2
+CB,Custo Barcelona,,,,,,,,2
+CE,Céline,,,,,,,1,2
+CH,Chloe,,,,,,,,2
+CK,Calvin Klein,,,,,,,2,2
+CL,Christian Lacroix,,,,,,,1,2
+CR,Clements Ribeiro,,,,,,,1,2
+D,Dior,,,,,,,3,2
+DEC,David Emanuel Couture,,,,,,,,2
+D&G,Dolce&Gabbana,,,,,,,2,2
+DI,Diesel,,,,,,,2,2
+DK,Donna Karan,,,,,,,1,2
+DO,Donda by Kanye West,,,,,,,1,2
+EH,Ed Hardy,,,,,,,1,2
+ET,Etro,,,,,,,,2
+F,Fendi,,,,,,,2,2
+G,Gucci,,,,,,,2,2
+GA,Giorgio Armani,,,,,,,1,2
+GAL,John Galliano,,,,,,,1,2
+GC,Giorgio Correggiari,,,,,,,,2
+GI,Givenchy,,,,,,,2,2
+GP,Guy Paulin,,,,,,,1,2
+H,Hermès,,,,,,,4,2
+HE,C. Herrera,,,,,,,1,2
+II,Italia Independent,,,,,,,,2
+J,Joop,,,,,,,1,2
+JE,Jette,,,,,,,1,2
+JA,Jun Ashida,,,,,,,,2
+JP,Jean Patou,,,,,,,,2
+JPG,Jean P. Gaultier,,,,,,,1,2
+KL,Karl Lagerfeld,,,,,,,1,2
+LV,Louis Vuitton,,,,,,,3,2
+LE,Lee,,,,,,,1,2
+L,Levi´s,,,,,,,2,2
+M,Mugler,,,,,,,1,2
+MJ,Marc Jacobs,,,,,,,1,2
+MM,Maison Margiela,,,,,,,1,2
+N,Nino Cerutti,,,,,,,1,2
+O,Owens,,,,,,,1,2
+OR,Oscar de la Renta,,,,,,,1,2
+PC,Pierre Cardin,,,,,,,,2
+PF,Paul Frank,,,,,,,,2
+RC,Roberto Cavalli,,,,,,,1,2
+RL,Ralph Lauren,,,,,,,2,2
+RS,Raf Simons,,,,,,,1,2
+TF,Tom Ford,,,,,,,2,2
+TH,Tommy Hilfiger,,,,,,,1,2
+TB,Tory Burch,,,,,,,1,2
+U,Ungaro,,,,,,,1,2
+V,Versace,,,,,,,1,2
+VA,Valentino,,,,,,,1,2
+VD,Von Dutch,,,,,,,1,2
+VI,Vivienne Westwood,,,,,,,1,2
+VW,Vera Wang,,,,,,,1,2
+Y,Yohji Yamamoto,,,,,,,1,2
+Z,Zegna,,,,,,,2,2
