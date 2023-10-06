@@ -98,7 +98,7 @@ Geburtsjahr des Knotens
 D = Deutschland
 USA = Amerika
 IT = Italien
-F = Frankreich 
+FR = Frankreich 
 GB = England
 JAP = Japan
 DR = Dominikanische Republik
