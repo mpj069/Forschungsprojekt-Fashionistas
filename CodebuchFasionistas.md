@@ -56,7 +56,7 @@ erhaltender Knoten, in diesem Fall: Marke , für die ein/e Designer*in arbeitet.
 
 Designer*innen Rang innerhalb einer Brand
 
-1 = Design Assistant
+1 = Jeglicher unterer Rang oder Design Assistant Design Assistant
 2 = Creative Director
 3 = Founder
 
@@ -95,23 +95,24 @@ Geburtsjahr des Knotens
 
 **main workplace**
 	
-D = Deutschland
-USA = Amerika
-IT = Italien
-FR = Frankreich 
-GB = England
-JAP = Japan
-DR = Dominikanische Republik
-VEN = Venezuela
-BRA = Brasilien
-WAL = Wales
+de = deutschland
+usa = amerika
+it = italien
+fr = frankreich 
+gb = england
+jap = japan
+dr = Dominikanische Republik
+ven = venezuela
+bra = brasilien
+wal = wales
+sp = spanien
 
 
 **type**
 
 1 = designer
 2 = brand
-3 =  muse
+3 = muse
 
 
 
@@ -129,25 +130,24 @@ Abschlussart des Designers
 1 = heterosexual: Der/Die Designer*in ist heterosexuell
 2 = homosexual: Der/Die Designer*in ist homosexuell   
 3 = bisexual : Der/Die Designer*in ist bisexuell
-4 = pansexual: Der/Die Designer*in ist pansexuell
-5 = asexual : Der/Die Desdigner*in ist asexuell
 
 
 **transfer**
-0 = Der/Die Deswigner*in hat direkt seine eigene Marke gegründet
-1 = Der/Die Designer*in hat die Marke ein mal gewechselt
-2 = Der/Die Designer*in hat die Marke zwei mal gewechselt
-3 = Die Marke wurde drei oder mehrmals gewechselt
+1 = Der/Die Deswigner*in hat direkt seine eigene Marke gegründet
+2 = Der/Die Designer*in hat die Marke ein mal gewechselt
+3 = Der/Die Designer*in hat die Marke zwei mal gewechselt
+4 = Die Marke wurde drei oder mehrmals gewechselt
 
 
 **value**
 
 Designervermögen/ Markenwert
 
-1 = unter 2 Mrd. Dollar
-2 = 2-10 Mrd. Dollar
-3 = 10-50 Mrd. Dollar
-4 = 50-100 Mrd. Dollar
+1 = 1 - 50 Mio. Dollar
+2 = 55 - 100 Mio. Dollar
+3 = 105 - 500 Mio. Dollar
+4 = 505 - 1 Mrd. Dollar
+5 = 1 Mrd. Dollar oder höher
 
 
 ##
