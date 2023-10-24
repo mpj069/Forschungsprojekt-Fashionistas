@@ -2239,23 +2239,21 @@ Das Netzwerk hat nach dem
 folgende Attribute:
 
 *Vertex-Attribute* \
-- name: Name des Knotens, anonym codiert von 1 bis 38 \
+- name: voller Name des Knotens \
 - sex: Geschlecht 1 weiblich, 2 männlich, 3 divers \
-- crpr: Vertiefungsrichtung (1 CR, 2 PR) \
-- age: Alter 1 bis 20, 2 21-22, 3 23-24, 4 25 und älter \
-- smoke: Nichtraucher 1, Raucher 2 \
-- tatoo: nein 1, ja 2 \
-- eyes: Augenfarbe: 1 grün, 2 blau, 3 braun, 4 blau. \
-- hair: Haarfarbe: 1 braun, 2 schwarz, 3 blond, 4 rot
+- birthyear: Geburtsjahr des Knotens \
+- main workplace: de deutschland, usa amerika, it italien, fr frankreich, gb england, jap japan, dr Dominikanische Republik, ven venezuela, bra brasilien, wal wales, sp spanien main workplace \
+- type: 1 designer, 2 brand, 3 muse
+- scholar: Abschlussart des Designers, 1 talent : Der/Die Designerin hat bis auf seine kreative Ader keinen Abschluss, 2 internship/work experience : Der/Die Designerin hatte eine Art Ausbildung bei einem Mentor oder praktische Erfahrungen in der Modebranche gesammelt, 3 degree Der/Die Designer*in hat eine Modeschule oder vergleichbares besucht. \
+- sexuality: 1 heterosexual, 2 homosexual, 3 bisexual \
+- transfer 1  Der/Die Deswignerin hat direkt seine eigene Marke gegründet,  2  Der/Die Designerin hat die Marke ein mal gewechselt, 3 Der/Die Designer*in hat die Marke zwei mal gewechselt, 4 Die Marke wurde drei oder mehrmals gewechselt \
+- value: Designervermögen/ Markenwert, 1 1 - 50 Mio. Dollar, 2 55 - 100 Mio. Dollar, 3 105 - 500 Mio. Dollar, 4 505 - 1 Mrd. Dollar, 5 1 Mrd. Dollar oder höher \
 
 Die Vertex-Attribute treffen auf alle Knoten zu.
 
 *Edge-Attribute* \
-- weight: Erste Nennung (Primärer Kontakt). Zweite Nennung (Sekunderärer
-Kontakt) \
-- relation: Ratsuche (help), Zusammenarbeit (work), Liebesbeziehung
-(love) \
-- complicated: bezieht sich nur auf das Teilnetzwerk Liebesbeziehung
+- position: Designer*innen Rang innerhalb einer Brand, 1 Jeglicher unterer Rang oder Design Assistant Design Assistant, 2 Creative Director, 3 Founder \
+- year: Jahr, in dem der Wechsel stattfand \
 
 Die Edge-Attribute sind unterschiedlich verteilt. Durch die Erhebung
 haben die Studierenden ein Ratsuchenetzwerk (Wen fragst Du um Rat?) und
@@ -2273,7 +2271,7 @@ verteilen: 38\*2 = 76 Beziehungenangaben für jeweils help und work.
 
 ### Teammitglieder
 
-NN NN NN
+Claire Penga Amelie Eberl Marie Johnson Moritz Kronberger Zehra Sahin Sara Hadzihasanovic
 
 ### Arbeitsaufwand und Rollen im Team
 
