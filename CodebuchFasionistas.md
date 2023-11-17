@@ -95,18 +95,18 @@ Geburtsjahr des Knotens
 
 **main workplace**
 	
-de = deutschland,
-usa = amerika,
-it = italien,
-fr = frankreich, 
-gb = england,
-jap = japan,
+de = Deutschland,
+usa = Amerika,
+it = Italien,
+fr = Frankreich, 
+gb = England,
+jap = Japan,
 dr = Dominikanische Republik,
-ven = venezuela,
-bra = brasilien,
-wal = wales,
-sp = spanien
-
+ven = Venezuela,
+bra = Brasilien,
+wal = Wales,
+sp = Spanien
+b = Belgien
 
 **type**
 
