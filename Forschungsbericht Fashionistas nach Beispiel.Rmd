@@ -231,7 +231,7 @@ ignoriert werden und dafür die Gewichte des Hilfs- und Ratsuche Netzwerk
 zusammengefasst werden (um das Ergebnis nicht zu verfälschen, wird das
 Beziehungsnetzwerk vorher gelöscht)
 
-```{r Vereinfachtes Gesamtnetzwerk erstellen mit simplify}
+```{r Vereinfachtes Gesamtnetzwerk erstellen mit simplify und Visualisierung}
 
 # Gesamtnetzwerk erstellen
 # Der Code wird hier nur eingefügt, falls der Chunk später alleine weiterverwendet wird.
@@ -271,30 +271,6 @@ klare Präferenzen innerhalb des Netzwerks zwischen einzelnen Dyaden
 zeigen. Diese Vorselektion ist später wichtig, um starke Beziehungspaare
 innerhalb des Netzwerks zu analysieren.
 
-```{r Visualisierung vereinfachtes Gesamtnetzwerk, fig.height=6, fig.width=10}
-
-# In diesem Netzwerk besteht nur noch eine Beziehung von Knoten zu Knoten, der jedoch unterschiedlich stark gewichtet ist. Hier lässt sich aber keine Aussage mehr darüber treffen, ob es sich um das Zusammenarbeits- oder Unterstützungsnetzwerk handelt. 
-
-plot(s_sim,
-     asp=0,
-     layout=layout_nicely,
-     vertex.size=8,
-     vertex.label.cex=2,
-     vertex.frame.color=NA,
-     edge.arrow.size=.7,
-     edge.color="black",
-     edge.width=E(s_sim)$weight/2, #halbiert den Wert der Gewichte, um eine bessere Darstellung zu ermöglichen
-     edge.curved=.2,
-     edge.curved=curve_multiple(s_sim),
-     )
-
-title("Gesamtnetzwerk vereinfacht", 
-      sub = "aggregierte Gewichte von Ratsuche und Zusammenarbeit",
-      cex.main = 4, col.main= "orange",
-      cex.sub = 2, font.sub = 3, col.sub = "black")
-
-
-```
 
 **Nur starke Beziehungen im Gesamtnetzwerk**
 
@@ -1376,185 +1352,209 @@ eine Brückenfunktion übernimmt.
 
 ## Erklärungsmuster: Reziprozität, Transitivität, Homophilie
 
-Für die Struktur von Netzwerken liegen einige Erklärungsmuster vor, dazu
-gehören Reziprozität, Transitivität und Homophilie.
+Für die Struktur von Netzwerken liegen einige Erklärungsmuster vor, dazu gehören Reziprozität, Transitivität und Homophilie.
 
-Reziprozität ist die gegenseitige Anerkennung in Netzwerken, d.h. dass
-Knoten (in gerichteten Netzwerken) gegenseitig verbunden
-sind. Transitivität beschreibt die Möglichkeit, dass zwischen Knoten
-eine Weitergabe stattfindet während Homophilie die Ähnlichkeit von
-Knoten betont.
+Reziprozität ist die gegenseitige Anerkennung in Netzwerken, d.h. dass Knoten (in gerichteten Netzwerken) gegenseitig gegenseitig verbunden sind. Transitivität beschreibt die Möglichkeit, dass zwischen Knoten eine Weitergabe stattfindet während Homophilie die Ähnlichkeit von Knoten betont.
 
-```{r Erklärungsmuster: Netzwerk erstellen}
-
+```{r Erklärungsmuster: Gesmatnetzwerk d}
 library(igraph)
-edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/zweite%20Pr%C3%BCfung%20-%20Edgelist.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/zweite%20Pr%C3%BCfung%20-%20Nodelist.csv", header=T, as.is=T, sep = ",")
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Edgelist%20(1).csv", strip.white = TRUE)
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Nodelist%20(1).csv", strip.white = TRUE)
 edgematrix <- as.matrix(edges)
-designer <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-list.edge.attributes(designer)
-assistants <- subgraph.edges(designer, E(designer)[position==1]) 
-plot(assistants)
-director <- subgraph.edges(designer, E(designer)["position"==2])
-plot(director)
-founder <- subgraph.edges(designer, E(designer)["position"==3])
-plot(founder)
+d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
 
 # Da es uns um Erklärungsmuster geht, werden die Nezwerke nicht vereinfacht
 
 ```
 
+```{r Erklärungsmuster: Teilnetzwerk director}
+
+library(igraph)
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/director%20Teilnetzwerk%20-%20Edgelist.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/director%20Teilnetzwerk%20-%20Nodelist.csv", header=T, as.is=T, sep = ",")
+edgematrix <- as.matrix(edges)
+director <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+
+```
+
+```{r r Erklärungsmuster: Teilnetzwerk assistant}
+library(igraph)
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/assistant%20Teilnetzwerk%20-%20Edgelist.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/assistant%20Teilnetzwerk%20-%20Nodelist.csv", header=T, as.is=T, sep = ",")
+edgematrix <- as.matrix(edges)
+assistant <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+```
+
+```{r r Erklärungsmuster: Teilnetzwerk founder}
+library(igraph)
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/founder%20Teilnetzwerk%20-%20Edgelist.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/founder%20Teilnetzwerk%20-%20Nodelist.csv", header=T, as.is=T, sep = ",")
+edgematrix <- as.matrix(edges)
+founder <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+```
+
+```{r Erklärungsmuster: Teilnetzwerk muse}
+library(igraph)
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/muse%20Teilnetzwerk%20-%20Edgelist.csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/muse%20Teilnetzwerk%20-%20Nodelist.csv", header=T, as.is=T, sep = ",")
+edgematrix <- as.matrix(edges)
+muse <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+```
+
 ### Reziprozität
 
-Für die Berechnung der Reziprozität im Netzwerk verwenden wir das
-vereinfachte Gesamtnetzwerk.
+Für die Berechnung der Reziprozität im Netzwerk verwenden wir das vereinfachte Gesamtnetzwerk.
 
 ```{r Reziprozität}
 ??reciprocity
-reciprocity(s)
-reciprocity(work)
-reciprocity(help)
+reciprocity(d)
+reciprocity(director)
+reciprocity(assistant)
+reciprocity(founder)
+reciprocity(muse)
 ```
 
-Der Wert der Reziprozität lässt sich nur im Verhältnis zu anderen Werten
-erklären. Die Reziprozität im **Gesamtnetzwerk** wird mit 43,18%
-berechnet. Das ist naheliegend, da das Forschungsdesign mit den Fragen
-der Zusammenarbeit und Ratsache per se reziproke Netzwerke bevorzugt.
-Als Kontrolle untersuchen wir die beiden Teilnetzwerke Ratsuche und
-Zusammenarbeit. Das Netzwerk der **Zusammenarbeit** hat die höchste
-ausgeprägte Reziprozität von 47,36%. Das ist naheliegend, da die Wahl
-der Teams häufig durch gegenseitige Sympathie bzw. vorherige Erfahrungen
-geprägt sind. Hingegen ist die **Ratsuche** deutlich einseitiger
-ausgeprägt mit 26,31% von reziproken Beziehungen. Auch dies erscheint
-aufgrund der Fragestellung naheliegend zu sein, denn die Ratsuche
-verläuft in den wenigsten Fällen tatsächlich reziprok (vgl. z.B. mit dem
-Konzept der Meinungsführer).
+Die Reziprozität beträgt sowohl im **Gesamtnetzwerk** als auch in den **Teilnetzwerken** Null. Dies deutet darauf hin, dass es keine wechselseitigen Verbindungen zwischen den einzelnen Knotenarten (Designern, Brands und Musen) gibt. In unserem Netzwerk sind die Beziehungen von einer Seite aus, von den Desigern zu den Brands oder Musen und von den Musen zu den Brands, initiiert. Wir haben also eine Netzwerk erstellt, in dem Designer hauptsächlich Ideen oder Kreationen an Brands oder Musen weitergeben, ohne dass es eine direkte Rückkopplung von Brands oder Musen zurück zu den Designern gibt.
 
 ### Transitivität
 
-Transitivität ist eng mit Triaden oder "Tripletts" verbunden (vgl. z.B.
-Hummel & Sodeur 2010).
+Transitivität ist eng mit Triaden oder "Tripletts" verbunden (vgl. z.B. Hummel & Sodeur 2010).
 
 ```{r Transitivität}
 ??transitivity
-transitivity(s)
-transitivity(work)
-transitivity(help)
+transitivity(d)
+transitivity(assistant) 
+transitivity(director)
+transitivity(founder)
+transitivity(muse) 
 ```
 
-Bei der Transitivität unterscheidet sich das Bild etwas: vor allem in
-den Teilnetzwerken liegt eine Transitivität mit jeweils 27% bei einem
-Viertel der Beziehungen vor. Das bedeutet, dass hier eine triadische
-Struktur vorliegt, bei der Inhalte weitergegeben werden.
+Im **Gesamtnetzwerk** liegt eine Transivität von ungefähr 21,1% vor. Das heißt, dass in nahezu in einem Viertel der Beziehung eine Inhaltsweitergabe über triadische Strukturen vorliegt. Insgesamt wechseln einige Designer zweimal eine Marke. Was heißt, dass einige Designer den Informationsfluss zwischen den Brands steuren und eine Gatekeeper Funktion haben. (siehe Karl Lagerfeld) In dem **Teilnetzwerk "founder"** gibt es keine Transivität, da dort nur die Verbindungen zwischen Gründer und Marke angezeigt werden. Bei den **Teilnetzwerken "director"** und **"assistant"** gibt es keine triadische Strukturen, da die ausgewählten Designer diese Positionen in Unternehmen selten genau zweimal antreten. Designer führen die selbe Position meistens wenn dann, einmal oder mindestens dreimal durch.Im Teilnetzwerk "muse" herrscht eine starke Vernetzung, die über triadische Strukturen hinausgeht.
+
+Gründe:
+
+-   einmaliger Wechsel im "assistant"-/"director"- Teilnetzwerk: Position als Karrieresprungbrett, Gründung von eigenem Label, Designer als Markengesicht
+
+-   mehrere Wechsel: Ausprobieren, Unzufriedenheit
 
 ### Homophilie
 
-Die Homophilie untersucht die Strukturähnlichkeit von Knoten in
-Netzwerken.
+Die Homophilie untersucht die Strukturähnlichkeit von Knoten in Netzwerken.
 
 ```{r Homophilie}
 # igraph verwendet zur Berechnung von Homophilie den Wert Assortivität: Dieser Wert gilt als positiv, wenn sich ähnliche Knoten (aufgrund deren Eigenschaften) miteinander verbinden. Ansonsten wird der Wert negativ berechnet.
 ??assortativity
-list.vertex.attributes(s)
+list.vertex.attributes(d)
 
-# Assortivität im Hauptnetzwerk
-assortativity_nominal(s, V(s)$sex, directed=TRUE)
-assortativity_nominal(s, V(s)$crpr, directed=TRUE)
-assortativity_nominal(s, V(s)$smoke, directed=TRUE)
-assortativity_nominal(s, V(s)$tatoo, directed=TRUE)
+# Assortivität im Hauptnetzwerk 
+assortativity_nominal(d, V(d)$value, directed=TRUE)
+assortativity_nominal(d, V(d)$sex, directed=TRUE)
+assortativity_nominal(d, V(d)$sexuality, directed=TRUE)
+assortativity_nominal(d, V(d)$birthyear, directed=TRUE)
+assortativity_nominal(d, V(d)$scholar, directed=TRUE)
+assortativity_nominal(d, V(d)$transfer, directed=TRUE)
 
-# Assortivität im Teilnetzwerk Zusammenarbeit
-assortativity_nominal(work, V(work)$sex, directed=TRUE)
-assortativity_nominal(work, V(work)$crpr, directed=TRUE)
-assortativity_nominal(work, V(work)$smoke, directed=TRUE)
-assortativity_nominal(work, V(work)$tatoo, directed=TRUE)
+# Assortivität im Teilnetzwerk muse
+assortativity_nominal(muse, V(muse)$value, directed=TRUE)
+assortativity_nominal(muse, V(muse)$sexuality, directed=TRUE)
+assortativity_nominal(muse, V(muse)$sex, directed=TRUE)
+assortativity_nominal(muse, V(muse)$birthyear, directed=TRUE)
+assortativity_nominal(muse, V(muse)$scholar, directed=TRUE)
+assortativity_nominal(muse, V(muse)$transfer, directed=TRUE)
 
-# Assortivität im Teilnetzwerk Zusammenarbeit
-assortativity_nominal(help, V(help)$sex, directed=TRUE)
-assortativity_nominal(help, V(help)$crpr, directed=TRUE)
-assortativity_nominal(help, V(help)$smoke, directed=TRUE)
-assortativity_nominal(help, V(help)$tatoo, directed=TRUE)
+# Assortivität im Teilnetzwerk director 
+assortativity_nominal(director, V(director)$sex, directed=TRUE)
+assortativity_nominal(director, V(director)$value, directed=TRUE)
+assortativity_nominal(director, V(director)$sexuality, directed=TRUE)
+assortativity_nominal(director, V(director)$birthyear, directed=TRUE)
+assortativity_nominal(director, V(director)$scholar, directed=TRUE)
+
+# Assortivität im Teilnetzwerk assistant 
+assortativity_nominal(assistant, V(assistant)$sex, directed=TRUE)
+assortativity_nominal(assistant, V(assistant)$value, directed=TRUE)
+assortativity_nominal(assistant, V(assistant)$sexuality, directed=TRUE)
+assortativity_nominal(assistant, V(assistant)$birthyear, directed=TRUE)
+assortativity_nominal(assistant, V(assistant)$scholar, directed=TRUE)
+assortativity_nominal(assistant, V(assistant)$transfer, directed=TRUE)
 ```
 
-Die Werte im Hauptnetzwerk nach Vertex-Attributen liegen alle unter 50%,
-so dass hier keine Form von Homophilie festgestellt werden kann. Das
-gilt auch für die Teilnetzwerke Ratsuche und Zusammenarbeit. Gerade bei
-Zusammenarbeit wäre eine Homophilie zu vermuten gewesen.
+#### Gesamtnetzwerk:
+
+Der Wert für das Attribut "value" im **Gesamtnetzwerk** ist positiv (0.07169886). Dies deutet darauf hin, dass ähnliche Knoten wie z.B., Designer mit ähnlichen Vermögen oder Marktwert eher miteinander verbunden sind.Der Wert für das Attribut "sex" liegt nahe bei -1, was zeigt, dass Knoten unterschiedlichen Geschlechts eher miteinander verbunden sind (mehr dazu bei der Assortivität des Musen Netzwerks). Andere Attribute wie "sexuality", "birthyear", "scholar" und "transfer" zeigen keine signifikante Homophilie (Assortativität nahe bei 0), was darauf hindeutet, dass es keine klare Tendenz gibt, dass ähnliche Werte dieser Attribute sich miteinander verbinden.
+
+#### Teilnetzwerk "muse":
+
+Die value-Variable hat eine starke negative Assortativität von etwa -0,4. Dies zeigt an, dass im Teilnetzwerk der Musen eine Tendenz besteht, sich mit Knoten zu verbinden, die ein höheres Vermögen als sie aufweisen. Es herrscht mit einer Assortivität von -0,23 des Attributs "sex" auch eine starke Tendenz der Knoten, sich mit dem gegensätzlichen Geschlecht zu verbinden. Die Musen sind meist weiblich und die Designer meistens männlich.Die anderen Variablen besitzen eine Assortivität gleich Null, also keine relevante Homopholie.
+
+#### Teilnetzwerke "director" und "assistant":
+
+In diesen Teilnetzwerken ist die Assortativität für die betrachteten Variablen (sex, sexuality, birthyear, scholar, transfer) gleich Null. Das bedeutet, dass in diesen spezifischen Teilnetzwerken keine ausgeprägten Tendenzen zu einer Verbindung mit ähnlichen Knoten in Bezug auf diese Attribute bestehen.In den Teilnetzwerken herrscht eine Tendenz zwischen den Knoten Verbindungen mit ähnlichem value-Atrribut einzugehen (ähnlich wie im Gesamtnetzwerk, jedoch deutlich geringerer Wert).
 
 # Visualisierung
 
-Für die abschließende Visualisierung sollten Sie mindestens zwei
-ausgewählte Grafiken zeigen: ein Mal das Gesamtnetzwerk (ggf. mit
-verschiedenen Unterteilungen) und dann mindestens ein spezifisches
-Netzwerk, das für die Analyse besonders relevant ist. Besonders
-aussagekräftig werden die Analysen, wenn Netzwerke nach bestimmten Node-
-oder Vertex-Attributen verglichen werden oder einzelne Ego-Netzwerke
-analysiert werden. Achten Sie hier auch darauf, bestimmte
-Zentralitätmaße zu verwenden.
-
-**Anmerkung** Hilfreiche Visualisierungstutorials gibt es hier
-
--   [Die Tutorials von K.
-    Ognyanova](https://kateto.net/network-visualization)
--   [Network Visualization
-    Cookbook](https://rstudio-pubs-static.s3.amazonaws.com/341807_7b9d1a4e787146d492115f90ad75cd2d.html)
--   [Dai Chizuka's
-    Tutorial](https://dshizuka.github.io/networkanalysis/tutorials.html)
-
 ## Gesamtnetzwerk
 
-```{r Visualisierung Gesamtnetzwerk , fig.height=8, fig.width=12, message=FALSE, warning=FALSE}
+```{r Visualisierung Gesamtnetzwerk , fig.height=6, fig.width=10, message=FALSE, warning=FALSE}
 library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-list.edge.attributes(s)
-ss <- delete_edge_attr(s, "relation")
-ss <- delete_edge_attr(s, "complicated")
-s_sim <- simplify(ss,edge.attr.comb=list(weight="sum"))
+library(ggraph)
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Edgelist%20(1).csv", strip.white = TRUE)
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Nodelist%20(1).csv", strip.white = TRUE)
+edgematrix <- as.matrix(edges)
+d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+list.edge.attributes(d)
+plot(d)
+dd <- delete_edge_attr(d, "position")
+dd <- delete_edge_attr(d, "year")
+dd <- delete_vertex_attr(d, "name")# löscht den Vertex-Atributt "name", da das Netzwerk sonst zu unübersichtlich ist
+d_sim <- simplify(dd,edge.attr.comb=list(weight="sum"))
 
 # Plotting 
 
 # definiert die Ränder (unten, link, oben, rechts)
-par(mar=c(10,1,8,1)) 
+par(mar=c(10,1,8,1))
 
-plot(s_sim,
-     asp=0,
-     layout=layout_nicely,
-     vertex.size=degree(s_sim, mode="all"), # Knotengröße nach Degree-Wert
-     vertex.label.cex=2,
-     vertex.frame.color=NA,
-     edge.arrow.size=.7,
-     edge.color="black",
-     edge.width=E(s_sim)$weight/2, #halbiert den Wert der Gewichte, um eine bessere Darstellung zu ermöglichen
-     edge.curved=.2,
-     edge.curved=curve_multiple(s_sim),
+# Größe des Plots setzen
+options(repr.plot.width = 8, repr.plot.height = 6) 
+
+library(igraph)
+plot(d_sim,
+     asp = 0,
+     layout = layout_with_fr(d_sim), # Layout-Algorithmus "Fruchterman-Reingold" zur besseren Übersicht,
+     vertex.size = degree(d_sim, mode = "all"), 
+     vertex.label.cex = 1,
+     vertex.frame.color = NA,
+     edge.arrow.size = 0.7,
+     edge.color = "black",
+     edge.width = E(d_sim)$weight / 4, #Wert der Gewichte durch vier für eine bessere Darstellung
+     edge.curved = 0.2,
+     edge.curved = curve_multiple(d_sim),
      )
 
 title("Gesamtnetzwerk vereinfacht", 
-      sub = "aggregierte Gewichte von Ratsuche und Zusammenarbeit",
-      cex.main = 3, col.main= "orange",
-      cex.sub = 2, font.sub = 3, col.sub = "black")
+      sub = "aggregierte Gewichte von position und year",
+      cex.main = 2, col.main = "orange",
+      cex.sub = 1.5, font.sub = 3, col.sub = "black")
 
-par(mar=c(2,2,2,2)) 
+par(mar = c(2, 2, 2, 2))
+
 
 ```
 
 ```{r Visualisierung von Farbverläufen von Werten, fig.height=8, fig.width=12, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-list.edge.attributes(s)
-ss <- delete_edge_attr(s, "relation")
-ss <- delete_edge_attr(s, "complicated")
-s <- simplify(ss,edge.attr.comb=list(weight="sum"))
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Edgelist%20(1).csv", strip.white = TRUE)
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Nodelist%20(1).csv", strip.white = TRUE)
+edgematrix <- as.matrix(edges)
+d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+list.edge.attributes(d)
+dd <- delete_edge_attr(d, "position")
+dd <- delete_edge_attr(d, "year")
+dd <- delete_vertex_attr(d, "name")
+d_sim <- simplify(dd,edge.attr.comb=list(weight="sum"))
 
 # Berechnung des Indegree-Werts normalisiert
-ins <- degree(s, mode = "in", normalized = TRUE)
+ins <- degree(d, mode = "in", normalized = TRUE)
 
 # legt die Farbskala fest
 palette = colorRampPalette(c('lightblue','darkblue'))
@@ -1567,7 +1567,7 @@ graphCol = palette(fine)[as.numeric(cut(ins, breaks = fine))]
 
 par(mar=c(10,1,10,1))
 
-plot(s, 
+plot(d, 
      asp=0,
      rescale=TRUE,
      layout=layout_nicely,
@@ -1576,89 +1576,147 @@ plot(s,
      vertex.size=6, # hier könnte auch die Größe der indegrees gesetzt werden
      vertex.frame.color = "white", 
      edge.color="lightblue", 
-     edge.width=E(s_sim)$weight/2, 
+     edge.width=E(d_sim)$weight/2, 
      edge.curved=.2,
-     edge.curved=curve_multiple(s)
+     edge.curved=curve_multiple(d)
 )
 
-title("Wer wird um Rat gefragt? (n=38)", 
+title("Was sind die Hauptquellen der Einflussnahme auf Designer, Marken und Musen? 
+Eine Analyse des Indegree-Werts im Netzwerk. (n=145)", 
       sub = "Visualisierung nach normalisierter Indegree-Verteilung",
-      cex.main = 2, col.main= "darkblue",
-      cex.sub = 2, font.sub = 3, col.sub = "black")
+      cex.main = 1.5, col.main= "darkblue",
+      cex.sub = 1.5, font.sub = 3, col.sub = "black")
 
 ```
 
-### Gesamtnetzwerk nach Node-Attribut: Vertiefung und Geschlecht
+### Gesamtnetzwerk nach Node-Attribut: Knotenart und Geschlecht
 
 ```{r Geschlechtsverteilung, fig.height=8, fig.width=10, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-list.edge.attributes(s)
-ss <- delete_edge_attr(s, "relation")
-ss <- delete_edge_attr(s, "complicated")
-s <- simplify(ss,edge.attr.comb=list(weight="sum"))
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Edgelist%20(1).csv", strip.white = TRUE)
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Nodelist%20(1).csv", strip.white = TRUE)
+edgematrix <- as.matrix(edges)
+d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+list.edge.attributes(d)
+list.vertex.attributes(d)
+dd <- delete_edge_attr(d, "position")
+dd <- delete_edge_attr(d, "year")
+dd <- delete_vertex_attr(d, "name")
+d_sim <- simplify(dd,edge.attr.comb=list(weight="sum"))
+d <- simplify(dd,edge.attr.comb=list(weight="sum"))
 
 # Farben und Formen setzen
 
 # weist den Attributswerten entsprechende Farben zu
-V(s)[V(s)$sex == 1]$color <- "pink"
-V(s)[V(s)$sex == 2]$color <- "lightblue"
-V(s)[V(s)$sex == 3]$color <- "lightgreen"
+V(d)[V(d)$sex == 1]$color <- "pink"
+V(d)[V(d)$sex == 2]$color <- "lightblue"
 
-# weist den Attributswerten der Vertiefung entsprechende Formen zu
-vertex.attributes(s)$crpr
-V(s)[V(s)$crpr == 1]$shape <- "square"  
-V(s)[V(s)$crpr == 2]$shape <- "circle"
 
+# weist den Attributswerten der position entsprechende Formen zu
+vertex.attributes(d)$type
+V(d)[V(d)$type == 1]$shape <- "sphere"  
+V(d)[V(d)$type == 3]$shape <- "square"
+V(d)[V(d)$type == 2]$shape <- "circle"
+
+# normalize_01-Funktion definieren
+normalize_01 <- function(x) (x - min(x)) / (max(x) - min(x)) + 0.25
+
+legend1 <- data.frame(attr = unique(vertex_attr(d, "type")),
+                          color = unique(V(d)$color))
+legend1 <- legend1[order(legend1$attr), c(1,2)]
+legend_labels1 <- c("männlich", NA, "weiblich")
+legend_labels2 <-c("brand", "muse", "designer")
 
 # definiert die Ränder (unten, link, oben, rechts)
-par(mar=c(12,1,8,1)) 
+par(mar=c(10,1,8,1))
 
-plot(s,
-     asp=0,
-     layout=layout_nicely,
-     # vertex.size=degree(s, mode="all"), # Knotengröße nach Degree-Wert
-     vertex.frame.color=NA,
-     vertex.size=7,
-     vertex.label.cex=1,
+# Größe des Plots setzen
+options(repr.plot.width = 8, repr.plot.height = 6) 
+
+library(igraph)
+plot(d,
+     asp = 0,
+     layout = layout_with_fr(d, niter = 1000, coords = NULL), # Layout-Algorithmus "Fruchterman-Reingold" zur besseren Übersicht
+     vertex.size = normalize_01(degree(d, mode = "all")) * 10, # Größe an die normalisierte Degree-Zentralität anpassen
+     vertex.frame.color = "black",
+     edge.arrow.size = 0.5,
+      edge.arrow.width = 2, 
      vertex.label.color="black",
-     edge.arrow.size=.7,
-     edge.color="gray20",
-     edge.width=E(s_sim)$weight/2, #halbiert den Wert der Gewichte, um eine bessere Darstellung zu ermöglichen
-     edge.curved=.2,
-     edge.curved=curve_multiple(s),
-     )
+     edge.color="lightgray",
+     edge.lty = "solid",
+     edge.width = E(d_sim)$weight / 4, # Wert der Gewichte durch vier für eine bessere Darstellung
+     edge.curved = 0.05,
+     vertex.label.family = "Verdana",
+      vertex.label.font = 2, #font face
+       vertex.label.cex = normalize_01(degree(d)) * 1.5,) # font expansion factor
 
-title("Gesamtnetzwerk: Vertiefung und Geschlecht", 
-      sub = "Vertiefung und Geschlecht",
-      cex.main = 2, col.main= "black",
-      cex.sub = 2, font.sub = 3, col.sub = "black")
+# erste Legende hinzufügen 
+legend(x = "bottomleft",      # position, also takes x,y coordinates
+      legend = legend_labels1,
+       pch = 19,              # legend symbols see ?points
+      col = legend1$color,
+       title = "Geschlecht",
+      pt.cex = 2,  # Anpassen der Symbolgröße in der Legende
+       cex = 1,   # Anpassen der Textgröße in der Legende
+       bg = "white",  # Hintergrundfarbe für die Legende
+)
 
-par(mar=c(2,2,2,2)) 
+#zweite Legende hinzufügen
+legend(x = "bottomright",
+       legend = legend_labels2,
+       pch = c(1, 19, 15),  # Anpassen der Symbole für die verschiedenen Formen (es gab keine Form für "sphere", deswegen pch = 19)
+       col = "black",
+       title = "Typus",
+       pt.cex = 2,  # Anpassen der Symbolgröße in der Legende
+       cex = 1,   # Anpassen der Textgröße in der Legende
+       bg = "white",  # Hintergrundfarbe für die Legende
+)
+
+# Plot-Titel und Untertitel
+title("Gesamtnetzwerk: Knotenart (designer, muse, brand) 
+      und Geschlecht", 
+      sub = "Knotenart und Geschlecht",
+      cex.main = 1.5, col.main= "black",
+      cex.sub = 1.5, font.sub = 3, col.sub = "black")
+
+par(mar=c(2,2,2,2))
+
 ```
 
 ### Multiplexes Netzwerk
 
-Um das etwas übersichtlicher darszustellen, bietet sich bei einem
-Netzwerk mit verschiedenen Beziehungsarten an, diese farblich zu
-unterscheiden.
+Um das etwas übersichtlicher darszustellen, bietet sich bei einem Netzwerk mit verschiedenen Beziehungsarten an, diese farblich zu unterscheiden.
 
 ```{r Visualisierung eines multiplexe Netzwerke erstellen, fig.height=8, fig.width=10}
 
 library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Edgelist%20(1).csv", strip.white = TRUE)
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Nodelist%20(1).csv", strip.white = TRUE)
+edgematrix <- as.matrix(edges)
+d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+
+# Finde die Vertices, die das Attribut "type" mit dem Wert 1 haben
+vertices_to_delete <- which(V(d)$type == 1)
+
+# Lösche die ausgewählten Vertices, da die Musen in dem Netzwerk irrelevant sind
+d <- delete_vertices(d, vertices_to_delete)
+
 
 # definiert die Farbe der Relation
-E(s)[E(s)$relation == 1]$color <- "blue" 
-E(s)[E(s)$relation == 2]$color <- "darkgreen"
-E(s)[E(s)$relation == 3]$color <- "red"
+E(d)[E(d)$position == "founder"]$color <- "blue" 
+E(d)[E(d)$position == "assistant"]$color <- "darkgreen"
+E(d)[E(d)$position == "director"]$color <- "red"
+
+# weist den Attributswerten der position entsprechende Formen zu
+vertex.attributes(d)$type
+V(d)[V(d)$type == 3]$shape <- "square"
+V(d)[V(d)$type == 2]$shape <- "circle"
+
+#Legende erstellen
+legend_labels3 <- c("founder", "assistant", "director")
+legend_colors3 <- c("blue", "darkgreen", "red")
+legend_labels2 <-c("brand", "designer")
 
 # Plot mit den gesetzten Farben für das Attribut Beziehung realisieren
 
@@ -1666,190 +1724,111 @@ E(s)[E(s)$relation == 3]$color <- "red"
 par(mar=c(6,3,3,3)) 
 
 # Plot mit den gesetzten Farben für das Attribut Beziehung realisieren
-plot(s,
+plot(d,
      asp=0,
+     layout = layout_with_kk(d, coords = NULL),
      edge.arrow.size=.5,
-     vertex.color="gray75",
-     vertex.frame.color="NA",
-     vertex.size=8,
-     layout=layout_with_kk,
-     edge.curved=curve_multiple(s),
-     main="Multiplexes Netzwerk, d.h. verschiedene Formen der Beziehung",
-     sub="n=38 Knoten; Kantenfarbe 
-     blau=Zusammenarbeit, grün=Ratsuche, rot=Beziehung")
-
-par(mar=c(0,0,0,0)) 
-# setzt die Seitenaufteilung zurück
-par(mfrow=c(1,1), mar=c(2,0,2,0)) 
-
-```
-
-```{r Teilnetzwerke im Vergleich, fig.height=6, fig.width=9, message=FALSE, warning=FALSE, paged.print=FALSE}
-
-library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-
-# definiert die Farbe der Relation
-E(s)[E(s)$relation == 1]$color <- "blue" 
-E(s)[E(s)$relation == 2]$color <- "darkgreen"
-E(s)[E(s)$relation == 3]$color <- "red"
-
-# erstellt die Teilnetzwerke 
-work <- subgraph.edges(s, E(s)[relation==1]) 
-help <- subgraph.edges(s, E(s)[relation==2])
-love <- subgraph.edges(s, E(s)[relation==3])
-
-# Drei Netzwerke in einer Ziele
-par(mfrow=c(1,3), mar=c(2,0,2,0)) 
-
-# Drei Teilnetzwerke nacheinander plotten, diese werden dann in einer Zeile dargestellt
-
-plot(work,
-     asp=0,
-     edge.arrow.size=.5,
-     vertex.color="gray75",
-     vertex.frame.color="NA",
-     vertex.size=8,
-     layout=layout_with_kk,
-     edge.curved=curve_multiple(work),
-     main="Teilnetzwerk Work",
-     sub="n=38 Knoten; Kantenfarbe blau"
-     )
-
-plot(help,
-     asp=0,
-     edge.arrow.size=.5,
-     vertex.color="gray75",
-     vertex.frame.color="NA",
-     vertex.size=8,
-     layout=layout_with_kk,
-     edge.curved=curve_multiple(help),
-     main="Teilnetzwerk Help",
-     sub="n=38 Knoten; Kantenfarbe grün",
-)
+     edge.arrow.width = 2, 
+     vertex.color="lightgray",
+     edge.lty = "solid",
+     vertex.frame.color="black",
+      vertex.label.color="black",
+     vertex.size=6,
+     vertex.label.family = "Verdana",
+     edge.curved=curve_multiple(d),
+     edge.curved = 0.05,
+     main="Multiplexes Netzwerk - verschiedene Positionen der Designer",
      
-plot(love,
-     asp=0,
-     edge.arrow.size=.5,
-     vertex.color="gray75",
-     vertex.frame.color="NA",
-     vertex.size=8,
-     layout=layout_with_kk,
-     edge.curved=curve_multiple(love),
-     main="Teilnetzwerk Help",
-     sub="n=38 Knoten; Kantenfarbe grün"
+)
+
+legend(x = "bottomleft",
+       legend = legend_labels3,
+       pch = 19,
+       col = legend_colors3,
+       title = "Position",
+       pt.cex = 2,
+       cex = 1,
+       bg = "white")
+
+#zweite Legende hinzufügen
+legend(x = "bottomright",
+       legend = legend_labels2,
+       pch = c(1, 19, 15),  # Anpassen der Symbole für die verschiedenen Formen (es gab keine Form für "sphere", deswegen pch = 19)
+       col = "black",
+       title = "Typus",
+       pt.cex = 2,  # Anpassen der Symbolgröße in der Legende
+       cex = 1,   # Anpassen der Textgröße in der Legende
+       bg = "white",  # Hintergrundfarbe für die Legende
 )
 
 # setzt die Seitenaufteilung zurück
-par(mfrow=c(1,1), mar=c(2,0,2,0)) 
+par(mfrow=c(1,1), mar=c(2,0,2,0))  
 
-```
 
-Teilnetzwerk Beziehung mit Namen
-
-```{r Paarbeziehungen Label, fig.height=6, fig.width=10}
-
-# Zeige die Vertex-Attribute
-list.vertex.attributes(love)
-
-# Wir zeigen die Vornamen aus den Paarbeziehungen an
-vertex.attributes(love)$name_first
-
-# wir überschreiben den angezeigten label mit den Werten aus name_first
-V(love)$label <- V(love)$name_first
-
-V(love)[V(love)$sex == 1]$label.color <- "red"
-V(love)[V(love)$sex == 2]$label.color <- "blue"
-V(love)[V(love)$sex == 3]$label.color <- "darkgreen"
-
-plot(love, 
-		 asp=0,
-		 vertex.shape="none", 
-		 vertex.label=love$name_first,
-		 # vertex.label.color="black",
-		 vertex.label.font=1, 
-     vertex.label.cex=3, 
-		 edge.color="black",  
-		 edge.width=3,
-		 main="Liebes-Netzwerk mit Vornamen")
- 
 ```
 
 # Diskussion: Fazit, Limitationen und Ausblick
 
-Hier findet die Diskussion der Ergebnisse statt: - Wurden anfangs
-Arbeitshypothesen aufgestellt? Lassen sich diese bestätigen oder
-widerlegen? - Welche (neuen) Erkenntnisse hat die Analyse gebracht? - Wo
-liegen die Limitationen in der Studie? - Was könnten nächste Schritte in
-der Forschung sein?
+**Arbeitshypothesen:** Im Verlauf des Netzwerkforschungsprojekts wurden anfänglich bestimmte Annahmen getroffen, wie beispielsweise die Vermutung, dass bestimmte Geschlechterstereotype in den Beziehungen zwischen Designern, Brands und Musen vorhanden sind. Die Annahme über die Nationalität der Marke und des Designers wurde ebenfalls geprüft.
+
+**Bestätigung oder Widerlegung von Hypothesen:** Die Analyse hat einige interessante Ergebnisse hervorgebracht. Die meisten Designer waren männlich, während die Musen überwiegend weiblich waren, was dem Geschlechterstereotyp entspricht. Diese Hypothese wurde somit bestätigt. Jedoch wurde die Annahme über den Zusammenhang zwischen der Nationalität der Marke und des Designers widerlegt, da in der Studie kein signifikanter Zusammenhang festgestellt werden konnte.
+
+**Neue Erkenntnisse:** Die Analyse hat wichtige Erkenntnisse über die Geschlechterverteilung unter Designern und Musen geliefert. Die Untersuchung hat gezeigt, dass bestimmte Stereotypen in diesem Bereich existieren, jedoch wurde auch deutlich, dass Stereotype nicht in allen Aspekten der Beziehungen zwischen Designern, Brands und Musen bestätigt werden können.
+
+**Limitationen der Studie:** Es gibt bestimmte Einschränkungen in der Studie, wie beispielsweise die Möglichkeit von Verzerrungen aufgrund der Datenquelle oder der begrenzten Datenverfügbarkeit. Zusätzlich könnten andere Faktoren, die nicht untersucht wurden, ebenfalls einen Einfluss auf die Beziehungen zwischen Designern, Brands und Musen haben.
+
+**Ausblick und nächste Schritte:** Ein qualitatives Interview mit Modeexperten im Rahmen der Erstellung des Edit-Beitrags Umfragen qird auf unserer Studie aufbauend, durchgeführt, um ein umfassenderes Verständnis für die Dynamiken und Gründe hinter den Netzwerkverbindungen zu erhalten. In der Forschung könnten weitere Analysen durchgeführt werden, die zusätzliche Variablen einbeziehen, um die Beziehungen innerhalb des Netzwerks genauer zu untersuchen. Außerdem könnte eine Erweiterung der Datenquellen und -größen weitere Einblicke in die Beziehungen zwischen den Akteuren bieten und so eine umfassendere Analyse ermöglichen.
+
+### Fazit:
+
+Das Netzwerkforschungsprojekt hat wichtige Einblicke in die Beziehungen zwischen Designern, Brands und Musen geliefert. Während einige anfängliche Annahmen bestätigt wurden, widerlegte die Studie andere Hypothesen. Die Analyse bestätigte das Geschlechterstereotyp in der Verteilung von Designern und Musen, fand jedoch keinen Zusammenhang zwischen der Nationalität von Marken und Designern. Trotz einiger Limitationen bietet diese Studie eine Grundlage für zukünftige Forschungen, die sich auf eine erweiterte und vertiefte Analyse der Netzwerkbeziehungen zwischen den Akteuren konzentrieren könnten.
 
 # Anlage
 
 ## Literatur
 
-Dunkake I. (2012). Soziale Netzwerke von Schülern: Beispiele angewandter
-Netzwerkanalysen. In: Hennig M. & Stegbauer C. (Hg.): Die Integration
-von Theorie und Methode in der Netzwerkforschung. Wiesbaden: VS Verlag
-für Sozialwissenschaften, S. 133-155.
+Dunkake I. (2012). Soziale Netzwerke von Schülern: Beispiele angewandter Netzwerkanalysen. In: Hennig M. & Stegbauer C. (Hg.): Die Integration von Theorie und Methode in der Netzwerkforschung. Wiesbaden: VS Verlag für Sozialwissenschaften, S. 133-155.
 
-Hummel & Sodeur (2010). Dyaden und Triaden. In: Stegbauer, C. &
-Häußling, R. (Hg.): Handbuch Netzwerkforschung. Wiesbaden: VS Verlag, S.
+Hummel & Sodeur (2010). Dyaden und Triaden. In: Stegbauer, C. & Häußling, R. (Hg.): Handbuch Netzwerkforschung. Wiesbaden: VS Verlag, S.
 
-Krackhardt D. (1987). Cognitive social structures. Social Networks, 9,
-104-134.
+Krackhardt D. (1987). Cognitive social structures. Social Networks, 9, 104-134.
 
-Luke, D. A. (2015). A user's guide to network analysis in R. Cham,
-Switzerland: Springer.
+Luke, D. A. (2015). A user's guide to network analysis in R. Cham, Switzerland: Springer.
 
-Ognyanova, K.(2019). Network Visualization with R. Sunbelt 2019
-Workshop, Montreal, Canada. www.kateto.net/sunbelt2019
+Ognyanova, K.(2019). Network Visualization with R. Sunbelt 2019 Workshop, Montreal, Canada. www.kateto.net/sunbelt2019
 
 ## Codebuch
 
 [Codebuch](https://github.com/hdm-crpr/226305/blob/master/data/crpr2/codebuch.md)
 
 ```{r Übersicht Netzwerkattribute}
-list.vertex.attributes(s)
-# vertex.attributes(s)
-list.edge.attributes(s)
-# edge.attributes(s)
+list.vertex.attributes(d)
+# vertex.attributes(d)
+list.edge.attributes(d)
+# edge.attributes(d)
 ```
 
-Das Netzwerk hat nach dem
-[Codebuch](https://github.com/hdm-crpr/226305/blob/master/data/crpr2/codebuch.md)
-folgende Attribute:
+Das Netzwerk hat nach dem [Codebuch](https://github.com/hdm-crpr/226305/blob/master/data/crpr2/codebuch.md) folgende Attribute:
 
-*Vertex-Attribute* \
-- name: voller Name des Knotens \
-- sex: Geschlecht 1 weiblich, 2 männlich, 3 divers \
-- birthyear: Geburtsjahr des Knotens \
-- main workplace: de deutschland, usa amerika, it italien, fr frankreich, gb england, jap japan, dr Dominikanische Republik, ven venezuela, bra brasilien, wal wales, sp spanien main workplace \
-- type: 1 designer, 2 brand, 3 muse
-- scholar: Abschlussart des Designers, 1 talent : Der/Die Designerin hat bis auf seine kreative Ader keinen Abschluss, 2 internship/work experience : Der/Die Designerin hatte eine Art Ausbildung bei einem Mentor oder praktische Erfahrungen in der Modebranche gesammelt, 3 degree Der/Die Designer*in hat eine Modeschule oder vergleichbares besucht. \
-- sexuality: 1 heterosexual, 2 homosexual, 3 bisexual \
-- transfer 1  Der/Die Deswignerin hat direkt seine eigene Marke gegründet,  2  Der/Die Designerin hat die Marke ein mal gewechselt, 3 Der/Die Designer*in hat die Marke zwei mal gewechselt, 4 Die Marke wurde drei oder mehrmals gewechselt \
-- value: Designervermögen/ Markenwert, 1 1 - 50 Mio. Dollar, 2 55 - 100 Mio. Dollar, 3 105 - 500 Mio. Dollar, 4 505 - 1 Mrd. Dollar, 5 1 Mrd. Dollar oder höher \
+*Vertex-Attribute*\
+- name: voller Name des Knotens\
+- sex: Geschlecht 1 weiblich, 2 männlich, 3 divers\
+- birthyear: Geburtsjahr des Knotens\
+- main workplace: de deutschland, usa amerika, it italien, fr frankreich, gb england, jap japan, dr Dominikanische Republik, ven venezuela, bra brasilien, wal wales, sp spanien main workplace\
+- type: 1 designer, 2 brand, 3 muse - scholar: Abschlussart des Designers, 1 talent : Der/Die Designerin hat bis auf seine kreative Ader keinen Abschluss, 2 internship/work experience : Der/Die Designerin hatte eine Art Ausbildung bei einem Mentor oder praktische Erfahrungen in der Modebranche gesammelt, 3 degree Der/Die Designer*in hat eine Modeschule oder vergleichbares besucht.\
+- sexuality: 1 heterosexual, 2 homosexual, 3 bisexual\
+- transfer 1 Der/Die Deswignerin hat direkt seine eigene Marke gegründet, 2 Der/Die Designerin hat die Marke ein mal gewechselt, 3 Der/Die Designer*in hat die Marke zwei mal gewechselt, 4 Die Marke wurde drei oder mehrmals gewechselt\
+- value: Designervermögen/ Markenwert, 1 1 - 50 Mio. Dollar, 2 55 - 100 Mio. Dollar, 3 105 - 500 Mio. Dollar, 4 505 - 1 Mrd. Dollar, 5 1 Mrd. Dollar oder höher\
 
 Die Vertex-Attribute treffen auf alle Knoten zu.
 
-*Edge-Attribute* \
-- position: Designer*innen Rang innerhalb einer Brand, 1 Jeglicher unterer Rang oder Design Assistant Design Assistant, 2 Creative Director, 3 Founder \
-- year: Jahr, in dem der Wechsel stattfand \
-
-Die Edge-Attribute sind unterschiedlich verteilt. Durch die Erhebung
-haben die Studierenden ein Ratsuchenetzwerk (Wen fragst Du um Rat?) und
-ein Zusammenarbeitsnetzwerk (Mit wem arbeitest Du am liebsten zusammen?)
-angeben müssen. Für beide Fragen gab es eine erste und ein zweite
-Nennung. Die erste Nennung wird entsprechend höher gewichtet. Die Fragen
-waren verpflichtend. Das bedeutet, dass die Edges sich wie folgt
-verteilen: 38\*2 = 76 Beziehungenangaben für jeweils help und work.
+*Edge-Attribute*\
+- position: Designer\*innen Rang innerhalb einer Brand, 1 Jeglicher unterer Rang oder Design Assistant Design Assistant, 2 Creative Director, 3 Founder\
+- year: Jahr, in dem der Wechsel stattfand\
 
 ## Datenmaterial und Skript
 
-[Datensatz](https://github.com/hdm-crpr/226305/blob/master/data/crpr2/readme.md)
+[Datensatz](https://github.com/cp071/Project-fashion-designer/blob/main/README.md)
 
 ## Team, Arbeitsaufwand und Lessons Learned
 
@@ -1859,108 +1838,16 @@ Claire Penga Amelie Eberl Marie Johnson Moritz Kronberger Zehra Sahin Sara Hadzi
 
 ### Arbeitsaufwand und Rollen im Team
 
-NN: Projektleitung und Coding, ca. 80 Stunden \
-NN: Literaturrecherche und Auswertung, ca. 80 Stunden \
-NN: Endbericht und Visualiserung, ca. 80 Stunden
+NN: Projektleitung und Coding, ca. 40 Stunden\
+NN: Literaturrecherche und Auswertung, ca. 50 Stunden\
+NN: Endbericht und Visualiserung, ca. 40 Stunden
 
-**MVP** (Most Valuable Member): einstimmige Nominierung, plus 0,3 in der
-Gesamtnote
+**MVP** (Most Valuable Member): einstimmige Nominierung, plus 0,3 in der Gesamtnote
 
 ### Lessons learned
 
-Bitte beschreiben Sie kurz als Team, was ihre größte Herausforderung war
-und was der größte Lernerfolg in dem Projekt.
+Im Verlauf des Projekts stellte das Team fest, dass die größte Herausforderung in der Bewältigung von Fehlern und der Fehlerbereinigung lag. Dies war besonders dann herausfordernd, wenn Teammitglieder an verschiedenen Aspekten des Projekts arbeiteten. Es war wichtig, dass das Team eine klare Kommunikation aufrechterhielt, um Fehler frühzeitig zu erkennen und effizient zu beheben, um Zeitverluste zu minimieren und die Qualität der Arbeit sicherzustellen.
 
-# Exkurs: Tidygraph {style="font-variant-ligatures: normal; white-space: normal;"}
+Die effektiven Zeiteinteilung und im Zeitmanagement war auch besonders anspruchsvoll. Zu Beginn wurden nicht ausreichend klare Zeitpläne festgelegt, was zu Engpässen und einer ungleichmäßigen Verteilung der Arbeitslast führte. Dies führte zu der Erkenntnis besser zu Plannen, um eine erhöhten Belastung in bestimmten Projektphasen und das potenzielle Risiko, die Kernaufgaben aus dem Blick zu verlieren, zu vermeiden .
 
-Für Fortgeschrittene ist **tidygraph** eine gute und schnelle Lösung, um
-Netzwerke zu analysieren. Tidygraph verwendet die Logik des Tidyverse
-und arbeitet mit einer etwas anderen Logik. Wenn man diese aber erst ein
-Mal verstanden hat, ist das Werkzeug sehr einfach und mächtig und
-erspart auch viel Arbeit in igraph. Allerdings ist die Visualisierung
-nur über andere Programme wie ggraph möglich. Aber: wir können die
-erstellten Teilnetzwerke auch wieder schnell und einfach nach igraph
-exportieren.
-
-```{r Exkurs Tidygraph}
-
-library(igraph) # Basis Programm
-library(tidyverse) # alles rund ums tidyverse
-library(tidygraph) # Tidygraph
-library(ggraph) # Netzwerkvisualisierung basierend auf ggplot2
-
-# Selektion von Teilnetzwerken in igraph
-
-sred <- delete_vertices(s, V(s)[sex != "2" & crpr=="2"])
-sred
-
-# Netzwerk einlesen
-
-edges <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-
-# tigraph Objekt erstellen (gerichtetes Netzwerk)
-
-st <- tbl_graph(nodes, edges, directed = TRUE)
-
-# Der Aufbau des tidygraph-Objekts ist etwas anders wie bei igraph:
-is.tbl_graph(st)
-
-# Ruft das tidygraph-Objekt auf
-st
-
-# Die Übersicht liefert uns eine schnelle Information über die Anzahl der Knoten und Kanten, Componenten sowie den Node- und Edge-Attributen.
-
-# Da tidygraph auf dem tidyverse basiert können wir mit den bereits bekannten Befehlen filter() 
-
-st_male_cr <- st %>%
-	filter(sex == "2" & crpr == "1")
-
-st_male_cr 
-
-# Export nach igraph
-# Das neue Teilnetzwerk lässt sich auch schnell und einfach wieder nach igraph exportieren:
-
-back_to_igraph <- as.igraph(st_male_cr)
-back_to_igraph
-
-###
-
-# Es wird schnell deutlich, dass tidygraph viel einfacher zu verwenden ist, um Teilnetzwerke zu selektieren. Allerdings kann tidygraph keine Netzwerke visualisieren, sondern dient nur zur Analyse und Vorbereitung einer Visualisierung.
-
-###
-
-# Einfache Visualisierung
-# autograph erlaubt einen schnellen Überblick über das Netzwerk mit ggraph, ohne dass die die Parameter dafür gesetzt werden.
-autograph(st)
-
-# Visualisierung mit ggraph Parametern
-
-ggraph(st, layout = "auto") +
-  geom_node_point() +
-  geom_edge_link()
-
-# Vorbereitung einer Visualisierung
-
-stv <- st %>% 
-  activate(nodes) %>% # Berechne für die KNoten
-  mutate(  
-    # den Zentralitätswert
-    deg = centrality_degree(),
-    # die Komponenten
-    comp = as.factor(group_components()), 
-    )
-
-# Es wurden nun die Spalten deg (für das Zentralitätsmaß Degree) und comp (für die Componenten im Netzwerk) hinzufgefügt
-stv
-
-ggraph(stv) +
-  geom_node_point(aes(color = comp,
-                      size = deg))+
-	geom_edge_link()
-
-
-
-
-
-```
+Die wichtigste Lernerfahrung war die Anerkennung der Bedeutung des Teamworks und einer koordinierten Zusammenarbeit. Das Team erkannte, dass eine offene Kommunikation und eine klare Verteilung der Aufgaben entscheidend sind, um den Überblick über das gesamte Projekt zu behalten und sicherzustellen, dass die Kernaufgaben nicht vernachlässigt werden. Ein strukturierter Ansatz zur Aufgabenverteilung, regelmäßige Treffen und die Etablierung klarer Verantwortlichkeiten halfen dabei, Hindernisse zu überwinden und den Projekterfolg zu gewährleisten. Diese Lektion betonte die Wichtigkeit eines kooperativen und koordinierten Teamworks für erfolgreiche Projektdurchführungen.
