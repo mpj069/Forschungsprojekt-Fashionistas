@@ -1799,7 +1799,9 @@ Ognyanova, K.(2019). Network Visualization with R. Sunbelt 2019 Workshop, Montre
 
 ## Codebuch
 
-[Codebuch](https://github.com/hdm-crpr/226305/blob/master/data/crpr2/codebuch.md)
+## Codebuch
+
+[Codebuch](https://github.com/cp071/Project-fashion-designer/blob/main/Codebuch.md)
 
 ```{r Übersicht Netzwerkattribute}
 list.vertex.attributes(d)
@@ -1808,17 +1810,18 @@ list.edge.attributes(d)
 # edge.attributes(d)
 ```
 
-Das Netzwerk hat nach dem [Codebuch](https://github.com/hdm-crpr/226305/blob/master/data/crpr2/codebuch.md) folgende Attribute:
+Das Netzwerk hat nach dem [Codebuch](https://github.com/cp071/Project-fashion-designer/blob/main/Codebuch.md) folgende Attribute:
 
 *Vertex-Attribute*\
 - name: voller Name des Knotens\
 - sex: Geschlecht 1 weiblich, 2 männlich, 3 divers\
 - birthyear: Geburtsjahr des Knotens\
-- main workplace: de deutschland, usa amerika, it italien, fr frankreich, gb england, jap japan, dr Dominikanische Republik, ven venezuela, bra brasilien, wal wales, sp spanien main workplace\
-- type: 1 designer, 2 brand, 3 muse - scholar: Abschlussart des Designers, 1 talent : Der/Die Designerin hat bis auf seine kreative Ader keinen Abschluss, 2 internship/work experience : Der/Die Designerin hatte eine Art Ausbildung bei einem Mentor oder praktische Erfahrungen in der Modebranche gesammelt, 3 degree Der/Die Designer*in hat eine Modeschule oder vergleichbares besucht.\
+- main workplace: Hauptarbeitsort de deutschland, usa amerika, it italien, fr frankreich, gb, england, jap japan, dr Dominikanische Republik, ven venezuela, bra brasilien, wal wales, sp spanien\
+- type: 1 designer, 2 brand, 3 muse\
+- scholar: Abschlussart des Designers, 1 talent keinen Abschluss, 2 internship/work experience , 3 Modeschule\
 - sexuality: 1 heterosexual, 2 homosexual, 3 bisexual\
-- transfer 1 Der/Die Deswignerin hat direkt seine eigene Marke gegründet, 2 Der/Die Designerin hat die Marke ein mal gewechselt, 3 Der/Die Designer*in hat die Marke zwei mal gewechselt, 4 Die Marke wurde drei oder mehrmals gewechselt\
-- value: Designervermögen/ Markenwert, 1 1 - 50 Mio. Dollar, 2 55 - 100 Mio. Dollar, 3 105 - 500 Mio. Dollar, 4 505 - 1 Mrd. Dollar, 5 1 Mrd. Dollar oder höher\
+- transfer: 1 Gründung, 2 einmaliger Brandwechsel, 3 zweimaliger Brandwechsel, 4 viermaliger Brandwechsel\
+- value: Designervermögen/ Markenwert, 1 1 - 50 Mio. \$, 2 55 - 100 Mio. \$, 3 105 - 500 Mio. \$, 4 505 - 1 Mrd. \$, 5 ab 1 Mrd. \$ oder höher\
 
 Die Vertex-Attribute treffen auf alle Knoten zu.
 
