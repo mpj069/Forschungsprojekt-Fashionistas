@@ -1840,10 +1840,10 @@ Aufteilung des Berichts:
 - Erklärungsmuster, Visualisierung, Diskussion: Claire Penga\
 
 allgemeine Aufgabenverteilung:
-- Forschungsfrage und Datenzugang: Claire Penga, Zehra Sahin, Marie Johnson,  Sara Hadzihasanovic
-- Datenerhebung und -bereinigung: alle
-- Vorbereitug der Präsentation: alle
-- Edit-Beitrag: Moritz Kronberger, Amelie Eberl
+- Forschungsfrage und Datenzugang: Claire Penga, Zehra Sahin, Marie Johnson, Sara Hadzihasanovic\
+- Datenerhebung und -bereinigung: alle\
+- Vorbereitug der Präsentation: alle\
+- Edit-Beitrag: Moritz Kronberger, Amelie Eberl\
 
 **MVP** (Claire Penga): einstimmige Nominierung, plus 0,3 in der Gesamtnote
 
