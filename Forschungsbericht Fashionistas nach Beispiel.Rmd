@@ -1,7 +1,7 @@
 ---
 title: "Forschungsbericht Modelabels"
-author: "Swaran Sandhu"
-date: "10-03-2022"
+author: "Claire Penga, Amelie Eberl Marie Johnson Moritz Kronberger Zehra Sahin Sara Hadzihasanovic "
+date: "20-06-2023"
 output:
   word_document:
     toc: yes
@@ -14,7 +14,7 @@ output:
     toc: yes
     toc_depth: 3
     number_sections: yes
-subtitle: Analyse des Beziehungsnetzwerks eines Semesters
+subtitle: Analyse der Beziehungen zwischen Designern, Musen und Brands
 editor_options: 
   markdown: 
     wrap: 72
