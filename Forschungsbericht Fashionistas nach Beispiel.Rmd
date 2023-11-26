@@ -1833,14 +1833,14 @@ Claire Penga Amelie Eberl Marie Johnson Moritz Kronberger Zehra Sahin Sara Hadzi
 ### Arbeitsaufwand und Rollen im Team
 
 Aufteilung des Berichts:
-- Einleitung, Datenerhebung: Sahra Hadzihasanovic\
+- Einleitung, Datenerhebung: Sara Hadzihasanovic\
 - Analyse und Interpretation des Gesamtnetzwerkes: Claire Penga\
 - Analyse der Teilnetzwerke, Componenten, Cluster und Cliquen: Marie Johnson\
 - Zentralitätsmaße: Zehra Sahin\
 - Erklärungsmuster, Visualisierung, Diskussion: Claire Penga\
 
 allgemeine Aufgabenverteilung:
-- Forschungsfrage und Datenzugang: Claire Penga, Zehra Sahin, Marie Johnson,  Sahra Hadzihasanovic
+- Forschungsfrage und Datenzugang: Claire Penga, Zehra Sahin, Marie Johnson,  Sara Hadzihasanovic
 - Datenerhebung und -bereinigung: alle
 - Vorbereitug der Präsentation: alle
 - Edit-Beitrag: Moritz Kronberger, Amelie Eberl
