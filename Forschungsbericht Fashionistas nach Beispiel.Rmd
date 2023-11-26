@@ -1,5 +1,5 @@
 ---
-title: "226305 Forschungsbericht Vorlage"
+title: "Forschungsbericht"
 author: "Swaran Sandhu"
 date: "10-03-2022"
 output:
