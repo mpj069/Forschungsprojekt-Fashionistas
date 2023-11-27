@@ -21,66 +21,31 @@ editor_options:
 ---
 
 # Abstract und Keywords 
+In diesem Forschungsprojekt analysieren wir das gerichtete Netzwerk von 46 ModedesignerInnen über einen Zeitraum von 30 Jahren. Besonders untersucht werden die Beziehungen zwischen den DesignerInnen und bekannten Modemarken, ebenso wie ihre Verbindung zu verschiedenen Musen. Wir ziehen den Vergleich zwischen den Wechseln der ModedesignerInnen und dem Transfer eines Fußballspielers zu einem anderen Team heran (Liu et al., 2016). Unsere Analyse ergab, dass die ModedesignerInnen nicht ausschließlich für eine Marke gearbeitet haben, sondern es viele Wechsel gab. Die Zentralitätsmaße enthüllen, dass DesignerInnen mit höheren Degree-Werten einen signifikanten Einfluss im Netzwerk ausüben. 
 
-Wir analysieren die Beziehungsnetzwerke innerhalb eines gerichteten,
-one-mode Netzwerks von 38 Studierenden des Studiengangs CR/PR an der
-Hochschule der Medien, Stuttgart. Die Beziehungsdimensionen umfassen -
-angelehnt an die Studie von Krackhardt 1987 ein Zusammenarbeits- und
-Ratsuche Netzwerk. Ergänzend wurden (fiktive) Liebesbeziehungen unter
-den Studierenden untersucht. Die Analyse zeigt, dass das Gesamtnetzwerk
-in kleinere, spezifische Cliquen zerfällt, die stark anlassbezogen sind.
-Besonders bei der Ratsuche zeigt sich eine starke Orientierung an
-einigen Personen, die wahrscheinlich die Funktion des oder der
-Semestersprecher übernehmen und damit eine Meinungsführer-Rolle inne
-haben.
-
-Keywords: Netzwerkanalyse, Studierende, Präferenznetzwerke, Cliquen,
-Meinungsführer
+Keywords: Netzwerkanalyse, Modedesigner, Musen, Teilnetzwerke, Broker
 
 # Einleitung
 
-Wir führen eine Untersuchung durch, in der wir den beruflichen Werdegang renommierter Modedesigner*innen über einen Zeitraum von 30 Jahren hinweg analysieren. Unsere Hauptfragestellung hierbei ist, ob diese Designer*innen ausschließlich für eine Marke gearbeitet haben oder ob es bekannte Wechsel zwischen verschiedenen Marken gegeben hat. Ebenso war es wichtig herauszufinden, welche Musen das berufliche Schaffen der Designer*innen während ihrer Karriere beeinflusst haben. Für das Netzwerk wurden die soziodemografischen Variablen (Geschlecht, Alter, Familienstand...) von 46 Modedesignern recherchiert. Im Bereich der Beziehungsebene schauen wir uns an, mit wem die Designer*innen zusammenarbeiten oder für welche Marken sie früher gearbeitet haben.
+Wir führen eine Untersuchung durch, in der wir den beruflichen Werdegang renommierter Modedesigner*innen über einen Zeitraum von 30 Jahren hinweg analysieren. Unsere Hauptfragestellung hierbei ist, ob diese DesignerInnen ausschließlich für eine Marke gearbeitet haben oder ob es bekannte Wechsel zwischen verschiedenen Marken gegeben hat. Ebenso war es wichtig herauszufinden, welche Musen das berufliche Schaffen der DesignerInnen während ihrer Karriere beeinflusst haben. Für das Netzwerk wurden die soziodemografischen Variablen (Geschlecht, Familienstand, Arbeitsort...) von 46 ModedesignerInnen recherchiert. Im Bereich der Beziehungsebene schauen wir uns an, mit wem die DesignerInnen zusammenarbeiten oder für welche Marken sie früher gearbeitet haben.
 
 # Vorarbeiten und vergleichbare Studien
 
 ## Forschungsstand
 
-Das Forschungsdesign lehnt sich zum einen an die lange Tradition der
-Netzwerkanalyse in der Schulforschung an (Dunkake 2012). Es greift zudem
-die klassische Studie von Krackhardt (1987) auf, der ein Ratsuche und
-Unterstützungsnetzwerk in einem Unternehmen untersuchte.
+Die Netzwerkforschung hat sich in den letzten Jahren weiterentwickelt und erstreckt sich mittlerweile über verschiedene sozialwissenschaftliche Fachgebiete (Schnegg, 2010). Dies ermöglicht es, Beziehungen und Netzwerke innerhalb der Modebranche als Ganzes zu betrachten und sich nicht nur individuell auf die Designer zu beziehen. Die Wechsel der DesignerInnen in unserer Forschung sind mit einem Transfer eines Fußballspielers in ein anderes Team vergleichbar (Liu et al., 2016).
 
 ## Arbeitshypothesen
 
-Wir gehen von folgenden Arbeitshypothesen aus:
+H1 Einfluss: Der Knoten mit dem höchsten Degree-Wert im Gesamtnetzwerk ist wahrscheinlich der einflussreichste Designer.
 
-H1 Ratsuche: Der Knoten mit dem höchsten Indegree hat wahrscheinlich die
-Funktion des Semestersprechers.
+H2: Das Netzwerk bildet weitere kleinere Teilnetzwerke.
 
-H2: Die Zusammenarbeit orientiert sich primär an Homophilie, d.h. z.B.
-die gleiche Vertiefungsrichtung.
+# Datenerhebung: Zugang und Codebuch
 
-H3: Das Netzwerk zerfällt anlassbezogen bzw. situativ in kleinere
-Cliquen.
+Die Datenerhebung bediente sich unterschiedlicher Methoden. In Büchern über DesignerInnen und deren Autobiografien wurde nach Informationen gesucht. Ebenso wurde durch verschiedene Designerarchive und Interviews nach weiteren Erkenntnissen geforscht. 
 
-Die Analyse einen überwiegend explorativen Charakter, um Muster in den
-Beziehungen untersuchen.
-
-# Datenerhebung: Zugang, Bereinigung und Codebuch
-
-## Datenzugang, -berenigung und Codebuch
-
-Studierende wurden innerhalb der Veranstaltung 226305a vom Dozierenden
-mit einem Online-Fragebogen im Sommersemester 2017 befragt.
-
-Der Datensatz wurde anschließend anonymisiert. Die Relationen Ratsuche
-und Zusammenarbeit sind erhalten geblieben, die Beziehungen Liebe sind
-fiktiv. Der Datensatz ist unter
-[Github](https://github.com/hdm-crpr/226305/tree/master/data/crpr2)
-verfügbar. Das
-[Codebuch](https://github.com/hdm-crpr/226305/blob/master/data/crpr2/codebuch.md)
-beschreibt die Variablen, Relationen und Gewichte des Netzwerks und ist
-ebenfalls auf Github hinterlegt.
+Das [Codebuch](https://github.com/mpj069/Forschungsprojekt-Fashionistas/blob/main/CodebuchFasionistas.md) enthält detaillierte Variablen, Beziehungen und Gewichtungen des Netzwerks. Es erklärt die Kodierungen für unterschiedliche Positionen im Netzwerk (1 für jeglichen unteren Rang oder Design Assistant, 2 für Creative Director, 3 für Founder) sowie andere relevante Informationen.
 
 # Analyse und Interpretation
 
@@ -1448,17 +1413,9 @@ Das Netzwerkforschungsprojekt hat wichtige Einblicke in die Beziehungen zwischen
 
 ## Literatur
 
-Dunkake I. (2012). Soziale Netzwerke von Schülern: Beispiele angewandter Netzwerkanalysen. In: Hennig M. & Stegbauer C. (Hg.): Die Integration von Theorie und Methode in der Netzwerkforschung. Wiesbaden: VS Verlag für Sozialwissenschaften, S. 133-155.
+Liu, X. F., Liu, Y.-L., Lu, X.-H., Wang, Q.-X., & Wang, T.-X. (2016). The Anatomy of the Global Football Player Transfer Network: Club Functionalities versus Network Properties. PLOS ONE, 11(6), e0156504. https://doi.org/10.1371/journal.pone.0156504
 
-Hummel & Sodeur (2010). Dyaden und Triaden. In: Stegbauer, C. & Häußling, R. (Hg.): Handbuch Netzwerkforschung. Wiesbaden: VS Verlag, S.
-
-Krackhardt D. (1987). Cognitive social structures. Social Networks, 9, 104-134.
-
-Luke, D. A. (2015). A user's guide to network analysis in R. Cham, Switzerland: Springer.
-
-Ognyanova, K.(2019). Network Visualization with R. Sunbelt 2019 Workshop, Montreal, Canada. www.kateto.net/sunbelt2019
-
-## Codebuch
+Schnegg, M. (2010). Die Wurzeln der Netzwerkforschung. In C. Stegbauer & R. Häußling (Hrsg.), Handbuch Netzwerkforschung (S. 21–28). VS Verlag für Sozialwissenschaften. https://doi.org/10.1007/978-3-531-92575-2_3
 
 ## Codebuch
 
