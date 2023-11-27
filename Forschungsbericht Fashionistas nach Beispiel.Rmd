@@ -19,7 +19,7 @@ editor_options:
   markdown: 
     wrap: 72
 ---
-Zehra
+
 **Anleitung und Umgang mit dem Dokument:**
 
 Dies ist ein Beispiel, wie ein Forschungsbericht aussehen könnte. Bitte
@@ -820,7 +820,7 @@ In unserem Netzwerk existieren keine isolierten Knoten. Es gibt 16 Komponente Di
 
 ```{r}
 
-#Netzwerk vereinfachen
+# Netzwerk vereinfachen
 decompose.graph(d) 
 
 dd <- delete_edge_attr(d, "position")
@@ -830,10 +830,10 @@ is_simple(d_sim) #TRUE
 
 is_connected(d_sim) #FALSE
 
-#Anzahl der Clusters
+# Anzahl der Clusters
 clusters(d_sim) #16 Stück
 
-#Komponenten auftrennen
+# Komponenten auftrennen
 d_comp <- decompose.graph(d_sim)
 d_comp
 
@@ -842,7 +842,7 @@ d_comp
 d_comp3 <- d_comp [[3]]
 d_comp16 <- d_comp [[16]]
 
-#Komponente visualisieren
+# Komponente visualisieren
 par(mfrow=c(1,2), mar=c(0,0,4,0))
 
 plot(d_comp3,
@@ -865,7 +865,7 @@ plot(d_comp16,
      edge.curved=curve_multiple(d_comp16),
      main="Kleinere Komponente")
 
-#Dichte der beiden Komponente
+# Dichte der beiden Komponente
 edge_density(d_sim) #0.0141844
 
 edge_density(d_comp16) #0.5
@@ -1014,332 +1014,171 @@ In dem Modelabel Netzwerk gibt es 23 Triaden. Cliquen geben an, wie viele triadi
 
 ```
 
-## Zentralitätsmaße (Zehra Sahin)
+# Zentralitätsmaße (Zehra Sahin)
 
-Je nach Auswahl des Netzwerks unterscheiden sich die Analyseergebnisse
-stark. Deshalb ist es notwendig zunächst zu klären, welche Netzwerke
-untersucht werden sollen.
+Im Folgenden Teil werden das zunächst das Gesamtnetzwerk und die dazugehörigen Teilnetzwerke bezüglich ihrer Zentralitätsmaße untersucht.
 
-Damit die Daten konsistent bleiben werden hier das vereinfachte
-Gesamtnetzwerk sowie die vereinfachten Unternetzwerke erneut erstellt.
-Das ist in der Regel nicht notwendit, dient hier aber der Absicherung
-der Datenkonsistenz.
+## Degree
 
-```{r Zentralitätsmaße: vereinfachte Netzwerke, message=FALSE, warning=FALSE, paged.print=FALSE}
+Degree-Werte können je nachdem welche Art von Netzwerk untersucht wird, Aussagen über die Struktur eines Netzwerks liefern. Bei der Degree-Zentralität werden Verbindungen bestimmter Knoten gezählt um herauszufinden welche Akteure im Netzwerk die meisten starken Beziehungen besitzen.   
 
-# Netzwerk einlesen und vereinfachen für Analyse
-library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-ss <- delete_edge_attr(s, "relation")
-ss <- delete_edge_attr(s, "complicated")
-s_sim <- simplify(ss,edge.attr.comb=list(weight="sum"))
-is_simple(s_sim)
+{r}
+# Gesamtnetzwerk d
+degree(d, mode="all")
+which.max(degree(d,mode = "all"))
 
-# Teilnetzwerke
-work <- subgraph.edges(s, E(s)[relation==1]) 
-help <- subgraph.edges(s, E(s)[relation==2])
-love <- subgraph.edges(s, E(s)[relation==3])
+Im Gesamtnetzwerk Karl Lagerfeld hat mit dem Degree Wert 9 die höchste Anzahl an direkten Verbindungen zu anderen Akteuren im Gesamtnetzwerk.
 
-work <- delete_edge_attr(work, "relation")
-work <- delete_edge_attr(work, "complicated")
+{r}
+# Teilnetzwerk assistant
+degree(assistant, mode = "all")
+which.max(degree(assistant, mode="all"))
 
-help <- delete_edge_attr(help, "relation")
-help <- delete_edge_attr(help, "complicated")
+Im Teilnetzwerk assistant hat Knoten 5 (Matthieu Blazy) den höchsten Degree-Wert 4.
 
-love <- delete_edge_attr(love, "relation")
+{r}
+# Teilnetzwerk director
+degree(director, mode = "all")
+which.max(degree(director, mode = "all"))
 
-#Vereinfachung 
-w_sim <- simplify(work,edge.attr.comb=list(weight="sum"))
-is_simple(w_sim)
+Christian Audigier (Knoten 2) hat im Teilnetzwerk director mit dem Degree Wert 4 die meisten Verbindungen.
 
-h_sim <- simplify(help,edge.attr.comb=list(weight="sum"))
-is_simple(h_sim)
-```
+{r}
+# Teilnetzwerk founder
+degree(founder, mode = "all")
+which.max(degree(founder, mode = "all"))
 
-### Degree
+Knoten 13 (DolceGabanna) hat mit dem Degree-Wert 2 die meisten Verbindungen im Teilnetzwerk founder.
 
-**Degree-Werte allgemein** Analyse des Knotens mit den häufigsten
-starken Beziehungen:
+{r}
+# Teilnetzwerk muse
+degree(muse, mode = "all")
+which.max(degree(muse, mode = "all"))
 
-```{r Zentralität: Degree-Werte allgemein}
+Kate Moss hat mit dem Degree-Wert 6 die meisten Vernindungen im Teilnetzwerk muse.
 
-# 1. Knoten mit den stärksten Beziehungen im Gesamtnetzwerk
-degree(s, mode="all")
-which.max(degree(s, mode="all"))
+Da absolute Zahlen in diesem Fall nur begrenzt aussagekräftig sind, wird im Folgenden der Degree-Wert normalisiert, also als Prozentwert angegeben. Dadurch kann der Degree-Wert eines Knotens im Verhältnis zu allen anderen Knoten im Netzwerk berechnet werden, was eine genauere Aussagen liefert. Hierfür wird der Befehl um das Argument normalized=TRUE ergänzt.
 
-# 2. Vergleich mit dem vereinfachten Netzwerk
-# Vergleich mit dem einfachen simplified Netzwerk
-degree(s_sim, mode="all")
-which.max(degree(s_sim, mode="all"))
+{r} 
+# Gesamtnetzwerk d
+degree(d, mode="all", normalized = TRUE)
+which.max(degree(d,mode = "all", normalized = TRUE))
 
-# 3. Teilnetzwerke 
-# 3.1 Zusammenarbeit
-degree(w_sim, mode="all")
-which.max(degree(w_sim, mode="all"))
-# 3.2 Ratsuche
-degree(h_sim, mode="all")
-which.max(degree(h_sim, mode="all"))
+Im Gesamtnetzwerk hat somit Knoten 63 (Karl Lagerfeld) 6,25 % aller Degree-Werte. Er hat somit die meisten Beziehungen zu Modelabels und Musen im Gesamtnetzwerk und gilt daher als ein zentraler Akteur im Gesamtnetzwerk.
 
-```
+{r}
+# Teilnetzwerk assistant
+degree(assistant, mode = "all", normalized = TRUE)
+which.max(degree(assistant, mode="all", normalized = TRUE))
 
-Der Vergleich der Netzwerke zeigt: - für das Gesamtnetzwerk: Knoten 18
-mit einem Degree-Wert von 21 - im vereinfachten Gesamtnetzwerk: Knoten
-18 mit einem Degree-Wert von 18 - Teilnetzwerk Work (vereinfacht):
-Knoten 19 mit einem Degree-Wert von 8 - Teilnetzwerk Help
-(verereinfacht): Knoten 18 mit einem Degree-Wert von 19
+Im Teilnetzwerk assistant hat Matthieu Blazy 9,09 % aller Degree-Werte. Er hat somit im Teilnetzwerk assistant, im Vergleich zu den anderen Knoten, bei den meisten Modelabels als assistant gearbeitet. 
 
-Die absoluten Zahlen sind allerdings nur begrenzt aussagekräftig:
-Deshalb lässt sich der Degree-Wert leicht normalisieren, d.h. als
-Prozentwert darstellen. Deshalb werden wir folgend nur noch mit den
-prozentualen Werten arbeiten. Diese Methode nennt sich Normalisierung
-und berechnet den Degree-Wert eines Knotens im Verhältnis zu allen
-anderen Knoten. Damit erreicht man eine genauere Aussage als mit einem
-reinen numerischen Wert. Dafür wird der Befehl um das Argument
-normalized = TRUE ergänzt.
+{r}
+# Teilnetzwerk director
+degree(director, mode = "all", normalized = TRUE)
+which.max(degree(director, mode = "all", normalized = TRUE))
 
-```{r Zentralität: Degree-Werte zentralisiert, include=FALSE}
+Im Teilnetzwerk director hat Christian Audigier 8,51 % aller Degree-Werte. Er war bei den meisten Modelabels als director tätig.
 
-# 1. Knoten mit den stärksten Beziehungen im Gesamtnetzwerk
-degree(s, mode="all", normalized = TRUE)
-which.max(degree(s, mode="all"))
+{r}
+# Teilnetzwerk founder
+degree(founder, mode = "all", normalized = TRUE)
+which.max(degree(founder, mode = "all", normalized = TRUE))
 
-# 2. Vergleich mit dem vereinfachten Netzwerk
-# Vergleich mit dem einfachen simplified Netzwerk
-degree(s_sim, mode="all", normalized = TRUE)
-which.max(degree(s_sim, mode="all"))
+Dolce Gabanna besitzt 3,27 % aller Degree-Werte im Teilnetzwerk founder. Dieser Wert lässt sich dadurch rechtfertigen, dass das Label DolceGabanna durch zwei founder gegrüdet wurde und somit die meisten Beziehungen zu foundern im Teilnetzwerk founder aufweist.
 
-# 3. Teilnetzwerke 
-# 3.1 Zusammenarbeit
-degree(w_sim, mode="all", normalized = TRUE)
-which.max(degree(w_sim, mode="all"))
-# 3.2 Ratsuche
-degree(h_sim, mode="all", normalized = TRUE)
-which.max(degree(h_sim, mode="all"))
+{r}
+# Teilnetzwerk muse
+degree(muse, mode = "all", normalized = TRUE)
+which.max(degree(muse, mode = "all", normalized = TRUE))
 
-```
+Kate Moss besitzt 8 % aller Degree-Werte im Teilnetzwerk muse. Damit lässt sich interpretieren, dass die meisten Designer Kate Moss als Muse haben, wodurch sie die meisten Verbindungen zun den Designer- und Modelabel-Knoten im Teilnetzwerk muse aufzeigt.
 
-Der Vergleich der Netzwerke zeigt: - für das Gesamtnetzwerk: Knoten 18
-hat 56,76% aller Degree-Werte.\
-- im vereinfachten Gesamtnetzwerk: Knoten 18 hat 48,46% aller
-Degree-Werte. - Teilnetzwerk Work (vereinfacht): Knoten 19 hat 21,62%
-aller Degree-Werte. - Teilnetzwerk Help (verereinfacht): Knoten 18 mit
-40,54% aller Degree-Werte.
+Mit den normalisierten/ ins Verhältnis gesetzten Zahlen lassen sich viel genauere Aussagen über die positionalen Maße im Netzwerk angeben.
 
-Mit den normalisierten, d.h. ins Verhältnis gesetzten Zahlen lassen sich
-viel genauere Aussagen über die positionalen Maße treffen.
+## Indegree
 
-**Indegree als Popularitätsmaß** Das Zentralitätsmaß Indegree wird
-häufig als Popularitätsmaß interpretiert. In diesem
+Der Indegree-Wert gilt als Popularitätsmaß interpretiert, da er die Anzahl der eingehenden Verbindungen angibt. Mit dem Indegree-Wert kann ermittelt werden welcher Knoten im Netzwerk besonders beliebt ist.
 
-```{r Zentralität: Indegree als Popularitätsmaß, include=FALSE}
+{r}
+# Indegree Gesamtnetzwerk
+degree(d, mode="in", normalized = TRUE)
+which.max(degree(d,mode = "in", normalized = TRUE))
 
-# Gesamtnetzwerk (vereinfacht)
-# zeigt die normalisierte Indegree-Verteilung im vereinfachten Gesamtnetzwerk
-degree(s_sim, mode="in", normalized = TRUE)
-# liefert den Knoten mit der höchsten Anzahl von starken Beziehungen
-which.max(degree(s_sim, mode="in"))
+Calvin Klein ist im Gesamtnetzwerk der beliebteste Knoten. Er besitzt die meisten Beziehungen zu Musen und Designern im Gesamtnetzwerk.
 
-# 1. Work-Netzwerk: 
-# zeigt die einfache Zentralität im Netzwerk der stärksten Beziehungen an
-degree(w_sim, mode="in", normalized = TRUE)
-# liefert den Knoten mit der höchsten Anzahl von starken Beziehungen
-which.max(degree(w_sim, mode="in"))
+{r}
+# Indegree Teilnetzwerk assistant 
+degree(assistant, mode="in", normalized = TRUE)
+which.max(degree(assistant,mode = "in", normalized = TRUE))
 
-# 2. Help-Netzwerk
-degree(h_sim, mode="in", normalized = TRUE)
-which.max(degree(h_sim, mode="in"))
+Fendi ist mit einem Wert von 6,81 % der beliebteste Knoten im Teilnetzwerk assistant. Damit lässt sich interpretieren, dass die meisten assistants bei Fendi gearbeitet haben. 
 
-# 3. Love-Netzwerk
-degree(love, mode="in", normalized = TRUE)
-which.max(degree(love, mode="in"))
+{r}
+# Indegree Teilnetzwerk director
+degree(director, mode="in", normalized = TRUE)
+which.max(degree(director,mode = "in", normalized = TRUE))
 
-```
+Gucci ist mit dem Wert 6,38 % der beliebteste Knoten im Teilnetzwerk director (6,38 % aller Indegrees fallen auf diesen Knoten). Daher waren die meisten directors beim Modelabel Gucci tätig. 
 
-**Wer ist besonders beliebt im Netzwerk?** Das Zentralitätsmaß
-"indegree" liefert eine Auskunft darüber, wer in einem Netzwerk
-besonders populär ist. Betrachtet werden die
+{r}
+# Indegree Teilnetzwerk founder
+degree(founder, mode="in", normalized = TRUE)
+which.max(degree(founder,mode = "in", normalized = TRUE))
 
-*Gesamtnetzwerk*: Knoten 18 scheint im Gesamtnetzwerk mit einem Wert
-35,13% der beliebteste Knoten zu sein.
+DolceGabanna ist mit einem Indegree-Wert von 3,27 % der populärste Knoten im Teilnetzwerk founder.
 
-*Zusammenarbeit*: Knoten 19 ist am beliebtesten bei der Zusammenarbeit:
-16,21% aller Indegrees entfallen auf diesen Knoten. *Unterstützung*:
-Knoten 18 vereint 35,13% aller Ratsuchenden auf sich. *Liebesbeziehung*:
-Knoten 23 hat den mit 22,72% ein hohes Maß an Popularität
+{r}
+# Indegree Teilnetzwerk muse
+degree(muse, mode="in", normalized = TRUE)
+which.max(degree(muse, mode = "in", normalized = TRUE))
 
-### Betweeness und Broker im Netzwerk
+Chanel ist mit einem Indegree-Wert von 5,33 % der beliebteste Knoten im Teilnetzwerk muse. Chanel ist damit das beliebteste Label unter den Musen.
 
-Der Zentralitätswert "Betweenness" zeigt, wie relevant einzelne Knoten
-für die Vernetzung zu anderen Knoten sind. Es geht also um Brücken oder
-Broker, die zwischen den einzelnen Netzwerken verbinden können.
+## Betweenness 
 
-```{r Zentralität: Betweenness als Broker, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
+Der Zentralitätswert "Betweenness" misst den Broker-Status im Netzwerk. Er zeigt wie relevant Knoten für die Vernetzung für andere Knoten sind und welcher Knoten bestimmte Informationen schneller erhält als andere Knoten im Netzwerk.
 
-# Gesamtnetzwerk (vereinfacht)
-# zeigt die normalisierte Indegree-Verteilung im vereinfachten Gesamtnetzwerk
-betweenness(s_sim, normalized = TRUE)
-# liefert den Knoten mit der höchsten Anzahl von starken Beziehungen
-which.max(betweenness(s_sim))
+{r}
+# Betweenness im Gesamtnetzwerk
+betweenness(d)
+which.max(betweenness(d))
 
-# 1. Work-Netzwerk: 
-# zeigt die einfache Zentralität im Netzwerk der stärksten Beziehungen an
-betweenness(w_sim, normalized = TRUE)
-# liefert den Knoten mit der höchsten Anzahl von starken Beziehungen
-which.max(betweenness(w_sim))
+Kate Moss gilt als Broker im Gesamtnetzwerk, da sie den höchsten Betweenness-Wert besitzt. Sie hat somit einen privilegierten Zugang zu Labels und Designern im Gesamtnetzwerk.
 
-# 2. Help-Netzwerk
-betweenness(h_sim, normalized = TRUE)
-which.max(betweenness(h_sim))
+{r}
+# Betweenness im Teilnetzwerk assistant
+betweenness(assistant)
+which.max(betweenness(assistant))
 
-# 3. Love-Netzwerk
-betweenness(love, normalized = TRUE)
-which.max(betweenness(love))
+Virgil Abloh gilt im Teilnetzwerk assistant als Broker, der zwischen einzelnen Netzwerken verbinden kann. Er hat somit einen privilegierten Zugang zu verschiedenen Modelabels.
 
-# weist dem Broker im vereinfachten Gesamtnetzwerk eine Farbe zu
-V(s_sim)[V(s_sim)$name == 18]$vertex.color <- "red"
+{r}
+# Betweenness im Teilnetzwerk director
+betweenness(director)
+which.max(betweenness(director))
 
-plot(s_sim, layout=layout_with_kk,
-     edge.arrow.size=.4,
-     edge.color="gold",
-     # vertex.color="gold",
-     # vertex.frame.color=NA,
-     vertex.label.color="black",
-     edge.curved=.2,
-     edge.curved=curve_multiple(s_comp1),
-     main="Broker im Netzwerk",
-     sub="vereinfachtes Hauptnetzwerk")
+Virgil Abloh hat im Teilnetzwerk director ebenfalls den privilegiertesten Zugang zu den Modelabels.
 
-```
-
-### Closeness
-
-```{r Zentralität: Closeness, fig.height=10, fig.width=16, message=FALSE, warning=FALSE, paged.print=FALSE}
-# Closeness 
-??closness
-# Closeness ist ein Zentralitätmaß, das berechnet, welche Knoten eng miteinander verbunden sind. Allerdings kann das Zentralitätsmaß nur bei Netzwerken eingesetzt werden, die nicht über mehrere Komponenten verfügen. Deshalb analysieren wir in diesem Beispiel nur die Hauptkomponente des vereinfachten Netzwerks und erstellen diese zunächst neu.
-
-
-# Netzwerk neu einlesen und Komponenten isolieren
-library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-# Vereinfachtes Hauptnetzwerk
-ss <- delete_edge_attr(s, "relation")
-ss <- delete_edge_attr(s, "complicated")
-s_sim <- simplify(ss,edge.attr.comb=list(weight="sum"))
-# Komponenten auftrennen
-s_comp <- decompose.graph(s_sim)
-s_comp
-# Komponenten neu benennen
-s_comp1 <- s_comp[[1]]
-s_comp2 <- s_comp[[2]]
-# neue Teilkomponenten analysieren
-s_comp1
-s_comp2
- 
- 
-# Closeness
-# Closness berechnet die relative Nähe zu anderen Knoten. Damit lässt sich interpretieren, welche Knoten im Netzwerk eine zentrale Rolle haben.
-
-close <- closeness(s_comp1, mode="all", normalized=TRUE)
-# liefert den Knoten mit der höchsten Anzahl von starken Beziehungen
+{r}
+# Betweenness im Teilnetzwerk founder
+betweenness(founder)
+which.max(betweenness(founder))
+close <- closeness(founder, mode="all")
 close
 which.max(close)
-which.min(close)
 
-# weist den größten und kleinsten Werten eine Randfarbe zu
-V(s_comp1)[V(s_comp1)$name == 32]$frame.color <- "red"
-V(s_comp1)[V(s_comp1)$name == 18]$frame.color <- "green"
+Da die beiden Founder Dolce und Gabanna exklusiv ein Modelabel (DolceGabanna) gründeten, gilt DolceGabanna als der populärste Knoten im Teilnetzwerk founder.
 
-plot(s_comp1, layout=layout_with_kk,
-     edge.arrow.size=.4,
-     edge.color="gold",
-     vertex.color="gold",
-     # vertex.frame.color=NA,
-     vertex.label.color="black",
-     edge.curved=.2,
-     edge.curved=curve_multiple(s_comp1),
-     main="Hauptkomponente",
-     sub="Closeness-Werte illustriert")
-     
+{r}
+# Betweenness im Teilnetzwerk muse
+betweenness(muse)
+which.max(betweenness(muse))
+close <- closeness(muse, mode="all")
+close
+which.max(close)
 
-```
-
-In der Hauptkomponente hat Knoten 32 mit einem Wert von 35,63% die
-höchste Closness-Zentralität, die niedrigste hat Knoten 18 mit 13,77%.
-
-### Spezialfall: Influencer (Bonus)
-
-Wenn es um einflussreiche Knoten in einem Netzwerk geht, gibt es ein
-Spezialpaket InfluenceR, das zusätzlich installiert werden kann. Damit
-wird es sehr einfach, einflussreiche Knoten auszulesen. Allerdings
-funktioniert das Paket nur bei ungerichteten Knoten, deshalb werden wir
-das Netzwerk neu erstellen.
-
-```{r InfluencerR Paket: Analyse von einflussreichen Knoten, fig.height=8, fig.width=12, message=FALSE, warning=FALSE, paged.print=FALSE}
-
-# Installation InfluenceR Programmbibliothek (nur, falls nötig)
-# install.packages("influenceR")
-
-library(igraph)
-library(influenceR)
-
-# Einlesen des Netzwerks als ungerichtetes Netzwerk und entsprechende Vereinfachung
-
-library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=FALSE)
-# Vereinfachtes Hauptnetzwerk
-ss <- delete_edge_attr(s, "relation")
-ss <- delete_edge_attr(s, "complicated")
-ssu <- simplify(ss,edge.attr.comb=list(weight="sum"))
-# neues ungerichtetes simplifiziertes Netzwerk für InfluenceR Analyse
-ssu
-
-# Was macht die Programmbibliothek InfluenceR?
-??influenceR
-
-# Wir erhalten einige neue Funktionen hinzu:
-# 1. ens(g) berechnet den Zugang zu strukturellen Löchern in einem Netzwerk
-# 2. bridging(g) berechnet die Knoten, die es ermöglichen, schneller andere Knoten zu erreichen, sogenannte Brücken. (nach Valente)
-
-holes <- ens(ssu)
-which.max(holes)
-
-bridges <- bridging(ssu)
-which.max(bridges)
-
-# weist den größten und kleinsten Werten eine Randfarbe zu
-V(ssu)[V(ssu)$name == 18]$color <- "green"
-V(ssu)[V(ssu)$name == 5]$color <- "blue"
-
-plot(ssu, layout=layout_nicely,
-		 asp=0,
-     edge.arrow.size=.4,
-     edge.color="gold",
-		 vertex.size=10,
-     # vertex.color="gold",
-		 vertex.frame.color=NA,
-     vertex.label.color="black",
-     edge.curved=.2,
-     edge.curved=curve_multiple(s_comp1),
-     main="Einflussreiche Knoten",
-     sub="Strukturelle Löcher (grün) und Brücken (blau)")
-
-```
-
-Mit der Programmbibliothek InfluenceR ließen sich zwei weitere relevante
-Knoten isolieren, die für die Konfiguration des Netzwerks (im Falle
-eines ungerichteten Netzwerks) relevant sind: Knoten 18 ermöglicht es,
-sogenannte strukturelle Löcher im Netzwerk anzusprechen während Knoten 5
-eine Brückenfunktion übernimmt.
+Das Modelabel Dior gilt als Broker im Teilnetzwerk muse, da es einen privilegierten Zugang zu den Musen aufzeigt. 
 
 ## Erklärungsmuster: Reziprozität, Transitivität, Homophilie
 
