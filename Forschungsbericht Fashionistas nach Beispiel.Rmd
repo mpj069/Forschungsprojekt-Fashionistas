@@ -102,62 +102,140 @@ plot(d, asp=0,
      main = "Übersicht Gesamtnetzwerk")
 ```
 
-```
-{r}
-# Netzwerke vereinfachen
+### Netzwerke vereinfachen
+
+Der erste Überblick zeigt, dass das Netzwerk schnell unübersichtlich
+wird, weil hier drei Beziehungsarten mit zum Teil mehreren Gewichten in
+einer Abbildung dargestellt werden.
+
+Deshalb ist es sinnvoll, ein vereinfachtes Gesamtnetzwerk zu erstellen.
+Vereinfacht bedeutet, dass die unterschiedlichen Positionsarten
+ignoriert werden und dafür die Gewichte der Positionen founder,
+assistant und director zusammengefasst werden
+
+```{r Vereinfachtes Gesamtnetzwerk erstellen mit simplify, fig.height=6, fig.width=10, message=FALSE, warning=FALSE}
 
 library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/muse%20Teilnetzwerk%20-%20Edgelist.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/muse%20Teilnetzwerk%20-%20Nodelist.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Edgelist%20(1).csv", header=T, as.is=T, sep = ",")
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Nodelist%20(1).csv", header=T, as.is=T, sep = ",")
+edgematrix <- as.matrix(edges)
 d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
 list.edge.attributes(d)
-
-## [1] "position" "year"
-
-# simplify Gesamtnetzwerk
-
-ds <- delete_edge_attr(d, "position")
-ds <- delete_edge_attr(d, "year")
-list.edge.attributes(ds)
-
-## [1] "position"
-
-# Edge-Attribute zusammenfassen
-
-is_simple(ds)
-
-d_sim <- simplify(ds,edge.attr.comb=list(weight="sum"))
+plot(d)
+dd <- delete_edge_attr(d, "position")
+dd <- delete_edge_attr(d, "year")
+is_simple(dd)
+d_sim <- simplify(dd,edge.attr.comb = list(weight="sum"))
 is_simple(d_sim)
-```
-
-[1] TRUE
-[1] TRUE
-
-```{r}
 d_sim
+ecount(d_sim)
+ecount(d)
+
+# Hat das Netzwerk Componenten?
+is_connected(d_sim)
+
+# Plotting 
+
+# definiert die Ränder (unten, link, oben, rechts)
+par(mar=c(10,1,8,1))
+
+# Größe des Plots setzen
+options(repr.plot.width = 8, repr.plot.height = 6) 
+
+library(igraph)
+plot(d_sim,
+     asp = 0,
+     layout = layout_with_fr(d_sim), # Layout-Algorithmus "Fruchterman-Reingold" zur besseren Übersicht,
+     vertex.size = degree(d_sim, mode = "all"), 
+     vertex.label.cex = 1,
+     vertex.frame.color = NA,
+     edge.arrow.size = 0.7,
+     edge.color = "black",
+     edge.width = E(d_sim)$weight / 4, #Wert der Gewichte durch vier für eine bessere Darstellung
+     edge.curved = 0.2,
+     edge.curved = curve_multiple(d_sim),
+     )
+
+title("Gesamtnetzwerk vereinfacht", 
+      sub = "aggregierte Gewichte von position und year",
+      cex.main = 2, col.main = "orange",
+      cex.sub = 1.5, font.sub = 3, col.sub = "black")
+
+par(mar = c(2, 2, 2, 2))
 ```
 
-IGRAPH 2c14a51 DN-B 76 63 -- 
-+ attr: name (v/c), sex (v/n), sexuality (v/n), birthyear
-| (v/n), scholar (v/n), transfer (v/n), main_workplace (v/c),
-| value (v/n), type (v/n), position (e/x)
-+ edges from 2c14a51 (vertex names):
- [1] Virgil Abloh       ->Lauryn Hill    
- [2] Annette de la Renta->Ode la Renta   
- [3] Giorgio Armani     ->Felize Kolibius
- [4] Christian Audigier ->Sarah Larson   
- [5] Christopher Bailey ->Cara Delevingne
- [6] Monica Belluci     ->DolceGabbana   
-+ ... omitted several edges
+Die Verteilung des Gewichts lässt klare zentrale Knoten innerhalb des
+Gesamtnetzwerks erkennen. Diese Vorselektion ist später wichtig, um
+wichtige Knoten innerhalb des Netzwerks zu analysieren.
 
-# die aggregierten Werte für weight von d_sim
+**Nur starke Beziehungen im Gesamtnetzwerk**
 
-```{r}
-list.edge.attributes(d_sim)
+Für dieses Netzwerk sollen nun nur noch starke Beziehungen mit einem
+Gewicht von \>= 6 angezeigt werden. Damit wird das Netzwerk in ein neues
+Teilnetzwerk zerlegt, das nur noch aus starken Beziehungen besteht:
+
+```{r Starke Beziehungen im Gesamtnetzwerk, fig.height=6, fig.width=10}
+
+# erstellt ein Teilnetzwerk nur aus starken Beziehungen
+s_sim_strong <- subgraph.edges(s_sim, E(s_sim)[weight>=6]) 
+s_sim_strong
+edge.attributes(s_sim_strong)$weight
+
+plot(s_sim_strong,
+     asp=0,
+     layout=layout_with_kk,
+     #vertex.size=3,
+     vertex.frame.color=NA,
+     vertex.color="lightgreen",
+     vertex.label.color="grey20",
+     vertex.label.cex=3,
+     #edge.arrow.size=2,
+     edge.color="lightgreen",
+     edge.width=E(s_sim_strong)$weight/2,
+     edge.curved=.3,
+     edge.curved=curve_multiple(s_sim_strong),
+     main="Gesamtnetzwerk: Starke Beziehungen", 
+      sub = "Gewicht >= 6",
+      cex.main = 2, col.main= "black",
+      cex.sub = 2, font.sub = 3, col.sub = "black")
+
+
 ```
 
-[1] "position"
+```{r Hervorhebung der populärsten Knoten im Netzwerk, fig.height=6, fig.width=10}
+
+# mit der Auswahl der Knoten lassen sich deren Rahmenfarben spezifisch angeben
+V(s_sim)[V(s_sim)$name == 6]$color <- "green"
+V(s_sim)[V(s_sim)$name == 18]$color <- "red"
+
+plot(s_sim,
+     layout=layout_in_circle,
+     vertex.size=degree(s_sim),
+     vertex.label.cex=2,
+     # vertex.frame.color=NA,(muss ausgeschaltet sein, damit die Knoten visualisiert werden können
+     edge.arrow.size=.5,
+     edge.color="grey80",
+     edge.width=E(s_sim)$weight/2, #halbiert den Wert der Gewichte, um eine bessere Darstellung zu ermöglichen
+     edge.curved=.2,
+     edge.curved=curve_multiple(s_sim),
+     )
+
+title("Gesamtnetzwerk vereinfacht", 
+      sub = "beliebteste Knoten in grün (stärkste Beziehungen) und rot (höchste Degrees)",
+      cex.main = 2, col.main= "black",
+      cex.sub = 2, font.sub = 3, col.sub = "black")
+
+
+```
+
+```{r Auslesen von Attributen}
+# Beispiel für das Vertex-Attribut Geschlecht
+vertex.attributes(d)$sex
+edge.attributes(d)position
+
+# wichtig: sind keine Werte gesetzt, dann behandelt igraph den Wert als NA, also not available. Das ist wichtig für die Kalkulation der Netzwerkbeziehungen. Complicated ist ein Wert der sich nur auf das Teilnetzwerk love bezieht und spielt deshalb für die anderen 2x76 Beziehungen keine Rolle. 
+
+```
 
 # Analyse der Teilnetzwerke 
 
