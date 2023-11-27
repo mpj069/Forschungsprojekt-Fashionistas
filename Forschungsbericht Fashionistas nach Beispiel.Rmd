@@ -143,7 +143,7 @@ plot(d, asp=0,
      vertex.size=10,
      main = "Übersicht Gesamtnetzwerk")```
 
-# Netzwerk vereinfacht
+# Netzwerke vereinfachen
 
 library(igraph)
 el <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/muse%20Teilnetzwerk%20-%20Edgelist.csv", header=T, as.is=T, sep = ",")
@@ -153,6 +153,48 @@ d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
 list.edge.attributes(d)
 
 ## [1] "position" "year"
+
+# simplify Gesamtnetzwerk
+
+ds <- delete_edge_attr(d, "position")
+ds <- delete_edge_attr(d, "year")
+list.edge.attributes(ds)
+
+## [1] "position"
+
+# Edge-Attribute zusammenfassen
+
+```{r}
+is_simple(ds)
+
+d_sim <- simplify(ds,edge.attr.comb=list(weight="sum"))
+is_simple(d_sim)
+```
+[1] TRUE
+[1] TRUE
+
+```{r}
+d_sim
+```
+
+IGRAPH 2c14a51 DN-B 76 63 -- 
++ attr: name (v/c), sex (v/n), sexuality (v/n), birthyear
+| (v/n), scholar (v/n), transfer (v/n), main_workplace (v/c),
+| value (v/n), type (v/n), position (e/x)
++ edges from 2c14a51 (vertex names):
+ [1] Virgil Abloh       ->Lauryn Hill    
+ [2] Annette de la Renta->Ode la Renta   
+ [3] Giorgio Armani     ->Felize Kolibius
+ [4] Christian Audigier ->Sarah Larson   
+ [5] Christopher Bailey ->Cara Delevingne
+ [6] Monica Belluci     ->DolceGabbana   
++ ... omitted several edges
+
+# 
+
+
+
+
 
 # Analyse der Teilnetzwerke (Marie Johnson)
 
