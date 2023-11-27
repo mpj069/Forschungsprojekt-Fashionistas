@@ -20,72 +20,8 @@ editor_options:
     wrap: 72
 ---
 
-**Anleitung und Umgang mit dem Dokument:**
+# Abstract und Keywords 
 
-Dies ist ein Beispiel, wie ein Forschungsbericht aussehen könnte. Bitte
-verwenden Sie die Vorlagen-Datei für die Struktur. Hier arbeite ich
-exemplarisch an einem Code-Beispiel die wichtigsten Analyse-Schritte ab.
-Dies ist nur ein Beispiel und wird für jedes Projekt unterschiedlich
-ausfallen. Die Projektteams müssen selbst ihren Schwerpunkt setzen. Die
-Forschungsfrage definiert den Aufbau und die Schwerpunktsetzung des
-Berichts mit. Achten Sie bitte darauf, dass die Datenerhebung und der
-Datenzugang klar und nachvollziehbar beschrieben wird ebenso wie die
-Operationalisierung des Codebuchs.
-
-Die Visualisierungen dienen hier nur der Illustration einzelner
-Schritte. In ihrem Forschungsprojekt fokussieren Sie sich auf einige
-wenige ausgewählte Fragstellungen. Die Visualisierung steht erst am Ende
-des Netzwerks und wird meist nur aussagekräftig durch den Vergleich mit
-Teilnetzwerken.
-
-Für dieses Beispiel erstelle ich für die Hauptkapitel das Netzwerk
-teilweise neu, d.h. **der Datensatz wird neu eingelesen**. Das ist nicht
-zwingend notwendig, stellt aber sicher, dass die Datenbasis immer
-bereinigt ist. Achten Sie bitte auch darauf, R regelmäßig neu zu starten
-und die eingespielten Werte (im Environment) zu löschen. Am einfachste
-geht das, wenn Sie unter dem Run-Befehl \> Restart R and run all chunks
-angeben. Dann können Sie sicher sein, dass nur die aktuellen Werte
-erfasst werden.
-
-Bitte übernehmen Sie den **Header** aus diesem Dokument, das ist der
-allererste Abschnitt aus dem Dokument mit "title:" etc. komplett. Dann
-wird Ihr Dokument automatisch richtig mit Inhaltsverzeichnis etc.
-erstellt. Der **YAML-Header** muss genau so übernommen werden. Natürlich
-müssen Sie auch knitr und pandoc installiert haben.
-
-Denken Sie bei Markdown immer an folgendes:
-
-1.  Verwenden Sie ab RStudio 4.1 **Visual Markdown**, dann ist die
-    Bearbeitung des Dokuments deutlich einfacher.
-2.  **Überschriften** setzen mit \#, \#\#, \#\#\# (diese werden
-    automatisch im Inhaltsverzeichnis übernommen), also keine
-    umständliche Fettung
-3.  **Code-Chunks** eindeutig benennen, damit diese schneller gefunden
-    werden. Die Namen der Chunks müssen **eindeutig** sein und dürfen
-    sich nicht doppeln.
-4.  Nicht immer ist eine Grafik/Visualisierung sinnvoll und zielführend:
-    nur dann, wenn wirklich wichtig.
-5.  Kommentierungen im Code immer dann, wenn die Schritte
-    nachvollziehbar gemacht werden: also nicht in jeder Zeile, vor allem
-    wenn der Code quasi reproduziert wird.
-6.  Hier eine gute [Anleitung](https://rmarkdown.rstudio.com/) für gute
-    RMarkdown-Dokumente. Besonders elegant ist es, wenn Sie die
-    berechneten Werte direkt in die Beschreibung übernehmen, d.h. jedes
-    berechnete Objekt lässt sich direkt
-7.  Abgabe auf **Moodle** in einer Zip-Datei als **RMarkdown-Dokument**,
-    gemeinsam mit den **Original-Dateien** der Edge- und Nodelist und
-    dem **Codebuch** sowie dem **Link auf das Github-Verzeichnis**, in
-    dem alle Daten liegen.
-
-Achten Sie auf die Einstellungsmöglichkeiten der **Code-Chunks**: nicht
-immer ist es sinnvoll, sich alle Ergebnisse anzeigen zu lassen: dies
-lässt sich gut bei den Einstellungen der Chunks steuern, ebenso wie die
-Abbildungsgröße.
-
-*\*\*\* Die Anleitung und die Anmerkungen natürlich löschen vor Abgabe
-\*\*\**
-
-**Abstract und Keywords**\
 Wir analysieren die Beziehungsnetzwerke innerhalb eines gerichteten,
 one-mode Netzwerks von 38 Studierenden des Studiengangs CR/PR an der
 Hochschule der Medien, Stuttgart. Die Beziehungsdimensionen umfassen -
