@@ -878,85 +878,93 @@ main = "Größte Clique im Mode Netzwerk")
 In dem Modelabel Netzwerk gibt es 23 Triaden. Cliquen geben an, wie viele triadische Strukturen komplett rezirpok sind. Dies bedeutet, dass alle drei Akteure eine Beziehung zu einander haben. In unserem Netzwerk gibt es 2 Cliquen.
 
 
-```
-
-# Zentralitätsmaße 
+# Zentralitätsmaße
 
 Im Folgenden Teil werden das zunächst das Gesamtnetzwerk und die dazugehörigen Teilnetzwerke bezüglich ihrer Zentralitätsmaße untersucht.
 
 ## Degree
 
-Degree-Werte können je nachdem welche Art von Netzwerk untersucht wird, Aussagen über die Struktur eines Netzwerks liefern. Bei der Degree-Zentralität werden Verbindungen bestimmter Knoten gezählt um herauszufinden welche Akteure im Netzwerk die meisten starken Beziehungen besitzen.   
+Degree-Werte können je nachdem welche Art von Netzwerk untersucht wird, Aussagen über die Struktur eines Netzwerks liefern. Bei der Degree-Zentralität werden Verbindungen bestimmter Knoten gezählt um herauszufinden welche Akteure im Netzwerk die meisten starken Beziehungen besitzen.
 
-{r}
+```{r}
 # Gesamtnetzwerk d
 degree(d, mode="all")
 which.max(degree(d,mode = "all"))
+```
 
 Im Gesamtnetzwerk Karl Lagerfeld hat mit dem Degree Wert 9 die höchste Anzahl an direkten Verbindungen zu anderen Akteuren im Gesamtnetzwerk.
 
-{r}
+```{r}
 # Teilnetzwerk assistant
 degree(assistant, mode = "all")
 which.max(degree(assistant, mode="all"))
+```
 
 Im Teilnetzwerk assistant hat Knoten 5 (Matthieu Blazy) den höchsten Degree-Wert 4.
 
-{r}
+```{r}
 # Teilnetzwerk director
 degree(director, mode = "all")
 which.max(degree(director, mode = "all"))
+```
 
 Christian Audigier (Knoten 2) hat im Teilnetzwerk director mit dem Degree Wert 4 die meisten Verbindungen.
 
-{r}
+```{r}
 # Teilnetzwerk founder
 degree(founder, mode = "all")
 which.max(degree(founder, mode = "all"))
+```
 
 Knoten 13 (DolceGabanna) hat mit dem Degree-Wert 2 die meisten Verbindungen im Teilnetzwerk founder.
 
-{r}
+```{r}
 # Teilnetzwerk muse
 degree(muse, mode = "all")
 which.max(degree(muse, mode = "all"))
+```
 
 Kate Moss hat mit dem Degree-Wert 6 die meisten Vernindungen im Teilnetzwerk muse.
 
 Da absolute Zahlen in diesem Fall nur begrenzt aussagekräftig sind, wird im Folgenden der Degree-Wert normalisiert, also als Prozentwert angegeben. Dadurch kann der Degree-Wert eines Knotens im Verhältnis zu allen anderen Knoten im Netzwerk berechnet werden, was eine genauere Aussagen liefert. Hierfür wird der Befehl um das Argument normalized=TRUE ergänzt.
 
-{r} 
+```{r}
 # Gesamtnetzwerk d
 degree(d, mode="all", normalized = TRUE)
 which.max(degree(d,mode = "all", normalized = TRUE))
+```
 
 Im Gesamtnetzwerk hat somit Knoten 63 (Karl Lagerfeld) 6,25 % aller Degree-Werte. Er hat somit die meisten Beziehungen zu Modelabels und Musen im Gesamtnetzwerk und gilt daher als ein zentraler Akteur im Gesamtnetzwerk.
 
-{r}
+```{r}
 # Teilnetzwerk assistant
 degree(assistant, mode = "all", normalized = TRUE)
 which.max(degree(assistant, mode="all", normalized = TRUE))
+```
 
-Im Teilnetzwerk assistant hat Matthieu Blazy 9,09 % aller Degree-Werte. Er hat somit im Teilnetzwerk assistant, im Vergleich zu den anderen Knoten, bei den meisten Modelabels als assistant gearbeitet. 
+Im Teilnetzwerk assistant hat Matthieu Blazy 9,09 % aller Degree-Werte. Er hat somit im Teilnetzwerk assistant, im Vergleich zu den anderen Knoten, bei den meisten Modelabels als assistant gearbeitet.
 
-{r}
+```{r}
 # Teilnetzwerk director
 degree(director, mode = "all", normalized = TRUE)
 which.max(degree(director, mode = "all", normalized = TRUE))
+```
 
 Im Teilnetzwerk director hat Christian Audigier 8,51 % aller Degree-Werte. Er war bei den meisten Modelabels als director tätig.
 
-{r}
+```{r}
 # Teilnetzwerk founder
 degree(founder, mode = "all", normalized = TRUE)
 which.max(degree(founder, mode = "all", normalized = TRUE))
+```
 
 Dolce Gabanna besitzt 3,27 % aller Degree-Werte im Teilnetzwerk founder. Dieser Wert lässt sich dadurch rechtfertigen, dass das Label DolceGabanna durch zwei founder gegrüdet wurde und somit die meisten Beziehungen zu foundern im Teilnetzwerk founder aufweist.
 
-{r}
+```{r}
 # Teilnetzwerk muse
 degree(muse, mode = "all", normalized = TRUE)
 which.max(degree(muse, mode = "all", normalized = TRUE))
+```
 
 Kate Moss besitzt 8 % aller Degree-Werte im Teilnetzwerk muse. Damit lässt sich interpretieren, dass die meisten Designer Kate Moss als Muse haben, wodurch sie die meisten Verbindungen zun den Designer- und Modelabel-Knoten im Teilnetzwerk muse aufzeigt.
 
@@ -966,85 +974,95 @@ Mit den normalisierten/ ins Verhältnis gesetzten Zahlen lassen sich viel genaue
 
 Der Indegree-Wert gilt als Popularitätsmaß interpretiert, da er die Anzahl der eingehenden Verbindungen angibt. Mit dem Indegree-Wert kann ermittelt werden welcher Knoten im Netzwerk besonders beliebt ist.
 
-{r}
+```{r}
 # Indegree Gesamtnetzwerk
 degree(d, mode="in", normalized = TRUE)
 which.max(degree(d,mode = "in", normalized = TRUE))
+```
 
 Calvin Klein ist im Gesamtnetzwerk der beliebteste Knoten. Er besitzt die meisten Beziehungen zu Musen und Designern im Gesamtnetzwerk.
 
-{r}
+```{r}
 # Indegree Teilnetzwerk assistant 
 degree(assistant, mode="in", normalized = TRUE)
 which.max(degree(assistant,mode = "in", normalized = TRUE))
+```
 
-Fendi ist mit einem Wert von 6,81 % der beliebteste Knoten im Teilnetzwerk assistant. Damit lässt sich interpretieren, dass die meisten assistants bei Fendi gearbeitet haben. 
+Fendi ist mit einem Wert von 6,81 % der beliebteste Knoten im Teilnetzwerk assistant. Damit lässt sich interpretieren, dass die meisten assistants bei Fendi gearbeitet haben.
 
-{r}
+```{r}
 # Indegree Teilnetzwerk director
 degree(director, mode="in", normalized = TRUE)
 which.max(degree(director,mode = "in", normalized = TRUE))
+```
 
-Gucci ist mit dem Wert 6,38 % der beliebteste Knoten im Teilnetzwerk director (6,38 % aller Indegrees fallen auf diesen Knoten). Daher waren die meisten directors beim Modelabel Gucci tätig. 
+Gucci ist mit dem Wert 6,38 % der beliebteste Knoten im Teilnetzwerk director (6,38 % aller Indegrees fallen auf diesen Knoten). Daher waren die meisten directors beim Modelabel Gucci tätig.
 
-{r}
+```{r}
 # Indegree Teilnetzwerk founder
 degree(founder, mode="in", normalized = TRUE)
 which.max(degree(founder,mode = "in", normalized = TRUE))
+```
 
 DolceGabanna ist mit einem Indegree-Wert von 3,27 % der populärste Knoten im Teilnetzwerk founder.
 
-{r}
+```{r}
 # Indegree Teilnetzwerk muse
 degree(muse, mode="in", normalized = TRUE)
 which.max(degree(muse, mode = "in", normalized = TRUE))
+```
 
 Chanel ist mit einem Indegree-Wert von 5,33 % der beliebteste Knoten im Teilnetzwerk muse. Chanel ist damit das beliebteste Label unter den Musen.
 
-## Betweenness 
+## Betweenness
 
 Der Zentralitätswert "Betweenness" misst den Broker-Status im Netzwerk. Er zeigt wie relevant Knoten für die Vernetzung für andere Knoten sind und welcher Knoten bestimmte Informationen schneller erhält als andere Knoten im Netzwerk.
 
-{r}
+```{r}
 # Betweenness im Gesamtnetzwerk
 betweenness(d)
 which.max(betweenness(d))
+```
 
 Kate Moss gilt als Broker im Gesamtnetzwerk, da sie den höchsten Betweenness-Wert besitzt. Sie hat somit einen privilegierten Zugang zu Labels und Designern im Gesamtnetzwerk.
 
-{r}
+```{r}
 # Betweenness im Teilnetzwerk assistant
 betweenness(assistant)
 which.max(betweenness(assistant))
+```
 
 Virgil Abloh gilt im Teilnetzwerk assistant als Broker, der zwischen einzelnen Netzwerken verbinden kann. Er hat somit einen privilegierten Zugang zu verschiedenen Modelabels.
 
-{r}
+```{r}
 # Betweenness im Teilnetzwerk director
 betweenness(director)
 which.max(betweenness(director))
+```
 
 Virgil Abloh hat im Teilnetzwerk director ebenfalls den privilegiertesten Zugang zu den Modelabels.
 
-{r}
+```{r}
 # Betweenness im Teilnetzwerk founder
 betweenness(founder)
 which.max(betweenness(founder))
 close <- closeness(founder, mode="all")
 close
 which.max(close)
+```
 
 Da die beiden Founder Dolce und Gabanna exklusiv ein Modelabel (DolceGabanna) gründeten, gilt DolceGabanna als der populärste Knoten im Teilnetzwerk founder.
 
-{r}
+```{r}
 # Betweenness im Teilnetzwerk muse
 betweenness(muse)
 which.max(betweenness(muse))
 close <- closeness(muse, mode="all")
 close
 which.max(close)
+```
 
-Das Modelabel Dior gilt als Broker im Teilnetzwerk muse, da es einen privilegierten Zugang zu den Musen aufzeigt. 
+Das Modelabel Dior gilt als Broker im Teilnetzwerk muse, da es einen privilegierten Zugang zu den Musen aufzeigt.
 
 ## Erklärungsmuster: Reziprozität, Transitivität, Homophilie
 
