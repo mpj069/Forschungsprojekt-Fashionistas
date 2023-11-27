@@ -163,6 +163,7 @@ title("Gesamtnetzwerk vereinfacht",
 
 par(mar = c(2, 2, 2, 2))
 ```
+### Gesamtnetzwerk: starke Beziehungen
 
 Die Verteilung des Gewichts lässt klare zentrale Knoten innerhalb des
 Gesamtnetzwerks erkennen. Diese Vorselektion ist später wichtig, um
