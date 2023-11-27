@@ -170,6 +170,7 @@ is_simple(ds)
 d_sim <- simplify(ds,edge.attr.comb=list(weight="sum"))
 is_simple(d_sim)
 ```
+
 [1] TRUE
 [1] TRUE
 
@@ -190,11 +191,13 @@ IGRAPH 2c14a51 DN-B 76 63 --
  [6] Monica Belluci     ->DolceGabbana   
 + ... omitted several edges
 
-# 
+# die aggregierten Werte für weight von d_sim
 
+```{r}
+list.edge.attributes(d_sim)
+```
 
-
-
+[1] "position"
 
 # Analyse der Teilnetzwerke (Marie Johnson)
 
