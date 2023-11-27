@@ -762,36 +762,6 @@ plot(muse, layout=layout_with_kk,
 
 ```
 
-```{r Degree Muse}
-# Degree Teilnetzwerk muse
-degree(muse, mode = "all")
-which.max(degree(muse, mode = "all"))
-
-
-```
-
-Die Degree-Analayswe hat ergeben,dass Kate Moss den höchsten Degree Wert hat. Sie ist die beliebteste Muse unter den DesignerInnen, und ist somit von allen Musen am besten vernetzt.
-
-```{r Indegree Muse}
-# Indegree Teilnetzwerk muse
-degree(muse, mode="in")
-which.max(degree(muse, mode = "in"))
-```
-
-Chanel ist die beliebteste Marke unter den Musen.
-
-```{r Betweenness und Closeness Muse}
-## Betweenness und Closeness
-betweenness(muse)
-which.max(betweenness(muse))
-close <- closeness(muse, mode="all")
-close
-which.max(close)
-```
-
-Dior stellt als Marke die meisten Verbindungen zwischen den Musen und DesignerInnen her.
-
-
 ## Komponente, Cluster und CLiquen
 Da man gewisse Knoten nach gewissen Kriterien sortieren kann, haben wir unser Modenetzwerk auf Komponente untersucht.
 
