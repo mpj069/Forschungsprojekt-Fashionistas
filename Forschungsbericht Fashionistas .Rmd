@@ -1483,13 +1483,13 @@ par(mfrow=c(1,1), mar=c(2,0,2,0))
 
 # Diskussion: Fazit, Limitationen und Ausblick
 
-**Arbeitshypothesen:** Im Verlauf des Netzwerkforschungsprojekts wurden anfänglich bestimmte Annahmen getroffen, wie beispielsweise die Vermutung, dass bestimmte Geschlechterstereotype in den Beziehungen zwischen Designern, Brands und Musen vorhanden sind. Die Annahme über die Nationalität der Marke und des Designers wurde ebenfalls geprüft.
+**Arbeitshypothesen:** Im Verlauf des Netzwerkforschungsprojekts wurden anfänglich bestimmte Annahmen getroffen, wie beispielsweise die Vermutung, dass bestimmte Geschlechterstereotype in den Beziehungen zwischen Designern, Brands und Musen vorhanden sind. Die Annahme über die Nationalität der Marke und des Designers wurde ebenfalls geprüft. 
 
 **Bestätigung oder Widerlegung von Hypothesen:** Die Analyse hat einige interessante Ergebnisse hervorgebracht. Die meisten Designer waren männlich, während die Musen überwiegend weiblich waren, was dem Geschlechterstereotyp entspricht. Diese Hypothese wurde somit bestätigt. Jedoch wurde die Annahme über den Zusammenhang zwischen der Nationalität der Marke und des Designers widerlegt, da in der Studie kein signifikanter Zusammenhang festgestellt werden konnte.
 
-**Neue Erkenntnisse:** Die Analyse hat wichtige Erkenntnisse über die Geschlechterverteilung unter Designern und Musen geliefert. Die Untersuchung hat gezeigt, dass bestimmte Stereotypen in diesem Bereich existieren, jedoch wurde auch deutlich, dass Stereotype nicht in allen Aspekten der Beziehungen zwischen Designern, Brands und Musen bestätigt werden können.
+**Neue Erkenntnisse:** Die Analyse hat wichtige Erkenntnisse über die Geschlechterverteilung unter Designern und Musen und zentrale Akteure in der Modebranche geliefert. Die Untersuchung hat gezeigt, dass bestimmte Stereotypen in diesem Bereich existieren, jedoch wurde auch deutlich, dass Stereotype nicht in allen Aspekten der Beziehungen zwischen Designern, Brands und Musen bestätigt werden können. Uns hat überrascht, dass sich Karl Lagerfeld gegenüber anderen Designer*innen als einer der populärsten Knoten in unserem Netzwerk herausgestellt hat und somit mit großer Wahrscheinlichkeit eine sehr wichtige Rolle als Insider in der Modebranche besitzt.
 
-**Limitationen der Studie:** Es gibt bestimmte Einschränkungen in der Studie, wie beispielsweise die Möglichkeit von Verzerrungen aufgrund der Datenquelle oder der begrenzten Datenverfügbarkeit. Zusätzlich könnten andere Faktoren, die nicht untersucht wurden, ebenfalls einen Einfluss auf die Beziehungen zwischen Designern, Brands und Musen haben.
+**Limitationen der Studie:** Es gibt bestimmte Einschränkungen in der Studie, wie beispielsweise die Möglichkeit von Verzerrungen aufgrund der Datenquelle oder der begrenzten Datenverfügbarkeit. Zusätzlich könnten andere Faktoren, die nicht untersucht wurden, ebenfalls einen Einfluss auf die Beziehungen zwischen Designern, Brands und Musen haben. Es wäre zudem noch schön, wenn Zusammenhänge zwischen den zeitlichen Epochen erfasst werden könnten.
 
 **Ausblick und nächste Schritte:** Ein qualitatives Interview mit Modeexperten im Rahmen der Erstellung des Edit-Beitrags Umfragen qird auf unserer Studie aufbauend, durchgeführt, um ein umfassenderes Verständnis für die Dynamiken und Gründe hinter den Netzwerkverbindungen zu erhalten. In der Forschung könnten weitere Analysen durchgeführt werden, die zusätzliche Variablen einbeziehen, um die Beziehungen innerhalb des Netzwerks genauer zu untersuchen. Außerdem könnte eine Erweiterung der Datenquellen und -größen weitere Einblicke in die Beziehungen zwischen den Akteuren bieten und so eine umfassendere Analyse ermöglichen.
 
@@ -1504,6 +1504,8 @@ Das Netzwerkforschungsprojekt hat wichtige Einblicke in die Beziehungen zwischen
 Liu, X. F., Liu, Y.-L., Lu, X.-H., Wang, Q.-X., & Wang, T.-X. (2016). The Anatomy of the Global Football Player Transfer Network: Club Functionalities versus Network Properties. PLOS ONE, 11(6), e0156504. https://doi.org/10.1371/journal.pone.0156504
 
 Schnegg, M. (2010). Die Wurzeln der Netzwerkforschung. In C. Stegbauer & R. Häußling (Hrsg.), Handbuch Netzwerkforschung (S. 21–28). VS Verlag für Sozialwissenschaften. https://doi.org/10.1007/978-3-531-92575-2_3
+
+Fuhse, J. (2018). Soziale Netzwerke. https://doi.org/10.36198/9783838549811
 
 ## Codebuch
 
