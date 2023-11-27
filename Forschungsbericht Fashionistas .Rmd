@@ -1,5 +1,5 @@
 ---
-title: "Forschungsbericht Modelabels"
+title: "Forschungsbericht Fashionistas"
 author: "Claire Penga, Amelie Eberl, Marie Johnson, Moritz Kronberger, Zehra Sahin, Sara Hadzihasanovic "
 date: "27-11-2023"
 output:
