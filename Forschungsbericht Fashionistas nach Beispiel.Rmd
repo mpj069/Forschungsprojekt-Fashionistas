@@ -1,6 +1,6 @@
 ---
 title: "Forschungsbericht Modelabels"
-author: "Claire Penga, Amelie Eberl Marie Johnson Moritz Kronberger Zehra Sahin Sara Hadzihasanovic "
+author: "Claire Penga, Amelie Eberl, Marie Johnson, Moritz Kronberger, Zehra Sahin, Sara Hadzihasanovic "
 date: "20-06-2023"
 output:
   word_document:
@@ -1637,12 +1637,12 @@ Die Vertex-Attribute treffen auf alle Knoten zu.
 
 ### Teammitglieder
 
-Claire Penga Amelie Eberl Marie Johnson Moritz Kronberger Zehra Sahin Sara Hadzihasanovic
+Claire Penga, Amelie Eberl, Marie Johnson, Moritz Kronberger, Zehra Sahin und Sara Hadzihasanovic
 
 ### Arbeitsaufwand und Rollen im Team
 
 Aufteilung des Berichts:
-- Einleitung, Datenerhebung: Sara Hadzihasanovic\
+- Einleitung, Datenerhebung: Sara Hadzihasanovic 
 - Analyse und Interpretation des Gesamtnetzwerkes: Marie Johnson\ Claire Penga\
 - Analyse der Teilnetzwerke, Componenten, Cluster und Cliquen: Marie Johnson\
 - Zentralitätsmaße: Zehra Sahin\
@@ -1651,7 +1651,7 @@ Aufteilung des Berichts:
 allgemeine Aufgabenverteilung:
 - Forschungsfrage und Datenzugang: Claire Penga, Zehra Sahin, Marie Johnson, Sara Hadzihasanovic\
 - Datenerhebung und -bereinigung: alle\
-- Vorbereitug der Präsentation: alle\
+- Vorbereitug der Präsentation: Claire Penga, Sara Hadzihasanovic, Marie Johnson, Zehra Sahin\
 - Edit-Beitrag: Moritz Kronberger, Amelie Eberl\
 
 **MVP** (Claire Penga): einstimmige Nominierung, plus 0,3 in der Gesamtnote
