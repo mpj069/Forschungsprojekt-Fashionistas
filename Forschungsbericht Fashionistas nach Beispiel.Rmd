@@ -87,7 +87,7 @@ ebenfalls auf Github hinterlegt.
 ## Das Gesamtnetzwerk
 
 Das Gesamtnetzwerk umfasst 145 Knoten und 158 Beziehungen (siehe igraph-Objekt). Es ist gerichtet und ungewichtet. 
-
+```
 {r Datensatz einlesen, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 library(igraph)
@@ -102,47 +102,43 @@ edgematrix <- as.matrix(edges)
 
 d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
 d
+```
 
-
+```
 {r}
 is.directed(d)
-
-{r}
 is.weighted(d)
 
-{r}
 ## ist das Netzwerk bereits vereinfacht?
 is.simple(d)
 
-{r}
 ## besteht das Netzwerk aus vielen Kompetenten?
 ## wenn ja, wie vielen?
 is.connected(d)
-
-{r}
 components(d)
-
-{r}
 ## Dichte des Netzwerks
 edge_density(d, loops=FALSE)
 
-{r}
 ## Umfang des Netzwerks
 diameter(d)
 
-{r}
 ## Pfaddistanzen (Distance)
 farthest_vertices(d)
+```
 
 Die Dichte im Netzwerk beträgt 0,76 % von allen möglichen Verbindungen. Die maximale Pfaddistanz beträgt 2 Schritte. 
 
+```
 {r}
 plot(d, asp=0,
      layout=layout_with_kk,
      edge.arrow.size=.5,
      vertex.size=10,
-     main = "Übersicht Gesamtnetzwerk")```
+     main = "Übersicht Gesamtnetzwerk")
+```
 
+```
+{r}
 # Netzwerke vereinfachen
 
 library(igraph)
@@ -164,7 +160,6 @@ list.edge.attributes(ds)
 
 # Edge-Attribute zusammenfassen
 
-```{r}
 is_simple(ds)
 
 d_sim <- simplify(ds,edge.attr.comb=list(weight="sum"))
