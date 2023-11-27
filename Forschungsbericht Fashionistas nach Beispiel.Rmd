@@ -85,189 +85,24 @@ ebenfalls auf Github hinterlegt.
 # Analyse und Interpretation
 
 ## Das Gesamtnetzwerk
+# Codebuch & GitHub
 
-Das Gesamtnetzwerk umfasst 38 Knoten und 176 Beziehungen (siehe
-igraph-Objekt). Es ist gerichtet und gewichtet.
-
-```{r Gesamnetzwerk erstellen, include=FALSE}
+```{r Datensatz einlesen, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 library(igraph)
 
-# Einlesen der Edge- und Nodelist
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
+# Einlesen der Edgelist aus GitHub Link: beachte den Separator ","
+edges <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Edgelist%20(1).csv", strip.white = TRUE)
 
-# Matrix erstellen
-edgematrix <-as.matrix(el)
+nodes <- read.csv("https://raw.githubusercontent.com/cp071/Project-fashion-designer/main/Gesamtnetzwerk%20%20-%20Nodelist%20(1).csv", strip.white = TRUE)
 
-# Zusammenführen von Edge- und Nodelist als igraph-Objekt s
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-s
-```
+# Wandelt die Matrix um
+edgematrix <- as.matrix(edges)
 
-```{r Beschreibung des Netzwerks}
-# Parameter zu Beschreibung des Netzwerks
-
-## ist das Netzwerk bereits vereinfacht?
-is.simple(s)
-
-## besteht das Netzwerk aus Komponenten?
-## wenn ja, wie vielen?
-is.connected(s)
-components(s)
-
-## Dichte des Netzwerks
-edge_density(s, loops=FALSE)
-
-## Umfang des Netzwerks
-diameter(s)
-
-## Pfaddistanzen (Distance)
-farthest_vertices(s)
-```
-
-Das Hauptnetzwerk besteht aus zwei Komponenten mit 32 und 6 Knoten, die
-nicht miteinander verbunden sind. Die Dichte im Netzwerk beträgt 12,51
-Prozent von allen möglichen Verbindungen. Die maximale Pfaddistanz hat
-18 Schritte.
-
-```{r Einfache Visualisierung des erstellten Objekt, fig.height=6, fig.width=9}
-
-# Pro-Tipp: die Ausgabe jedes "chunks" lässt sich über das Rädchen direkt unter der Chunk-Beschreibung einstellen. Hier habe ich die Bildfläche auf 6 zu 9 Inches eingestellt, d.h. das Netzwerk wird automatisch auf eine Fläche von 6 auf 9 Inches geplottet. Für den Anfang empfehle ich immer bei Netzwerken bis 50 Knoten mit dem Kamada-Kawai Algorithmus zu arbeiten, weil hier die Knoten immer an die gleiche Position gesetzt werden und wir dadurch Abweichungen besser erkennen können.
-
-# mit dem Befehl set.seed=XXX erreichen Sie, dass die Visualisierung immer gleich aussieht, sofern die gleichen Seeds verwendet werden.
-
-plot(
-  set.seed=123,
-  s,
-  asp=0, 
-  layout=layout_with_kk,
-  vertex.size=10,
-  main ="Übersicht Gesamtnetzwerk")
-```
-
-### Netzwerke vereinfachen
-
-Der erste Überblick zeigt, dass das Netzwerk schnell unübersichtlich
-wird, weil hier drei Beziehungsarten mit zum Teil mehreren Gewichten in
-einer Abbildung dargestellt werden.
-
-Deshalb ist es sinnvoll, ein vereinfachtes Gesamtnetzwerk zu erstellen.
-Vereinfacht bedeutet, dass die unterschiedlichen Beziehungsarten
-ignoriert werden und dafür die Gewichte des Hilfs- und Ratsuche Netzwerk
-zusammengefasst werden (um das Ergebnis nicht zu verfälschen, wird das
-Beziehungsnetzwerk vorher gelöscht)
-
-```{r Vereinfachtes Gesamtnetzwerk erstellen mit simplify und Visualisierung}
-
-# Gesamtnetzwerk erstellen
-# Der Code wird hier nur eingefügt, falls der Chunk später alleine weiterverwendet wird.
-
-library(igraph)
-el <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/edges.csv", header=T, as.is=T, sep = ",")
-nodes <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/data/crpr2/nodes.csv", header=T, as.is=T, sep = ",")
-edgematrix <-as.matrix(el)
-s <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
-list.edge.attributes(s)
-
-# simplify Gesamtnetzwerk 
-# Um die Ergebnisse der Gewichte nicht zu verfälschen, werden die Edge-Attribute relation und complicated gelöscht.
-ss <- delete_edge_attr(s, "relation")
-ss <- delete_edge_attr(ss, "complicated")
-list.edge.attributes(ss)
-
-# mit dem Befehl simplify() lassen sich Edge-Attribute wie das Gewicht zusammenfassen. Damit ist zwar nicht mehr nachvollziehbar, um welche Beziehung es sich handelt. Dafür lassen sich die Beziehungsstärken aber besser abbilden. Dies ist später für die Analyse von dyadischen Beziehungen wichtig.
-
-is_simple(ss)
-s_sim <- simplify(ss, edge.attr.comb=c(weight="sum"))
-
-is_simple(s_sim)
-s_sim
-
-# die aggregierten Werte für weight von s_sim werden deutlich.
-list.edge.attributes(s_sim)
-edge.attributes(s_sim)$weight
-
-# Hat das Netzwerk Componenten?
-is_connected(s_sim)
-```
-
-Die Anzahl der Knoten ist gleich geblieben (38), aber die Anzahl der
-Kanten hat sich auf 124 reduziert. Die Verteilung des Gewichts lässt
-klare Präferenzen innerhalb des Netzwerks zwischen einzelnen Dyaden
-zeigen. Diese Vorselektion ist später wichtig, um starke Beziehungspaare
-innerhalb des Netzwerks zu analysieren.
-
-
-**Nur starke Beziehungen im Gesamtnetzwerk**
-
-Für dieses Netzwerk sollen nun nur noch starke Beziehungen mit einem
-Gewicht von \>= 6 angezeigt werden. Damit wird das Netzwerk in ein neues
-Teilnetzwerk zerlegt, das nur noch aus starken Beziehungen besteht:
-
-```{r Starke Beziehungen im Gesamtnetzwerk, fig.height=6, fig.width=10}
-
-# erstellt ein Teilnetzwerk nur aus starken Beziehungen
-s_sim_strong <- subgraph.edges(s_sim, E(s_sim)[weight>=6]) 
-s_sim_strong
-edge.attributes(s_sim_strong)$weight
-
-plot(s_sim_strong,
-     asp=0,
-     layout=layout_with_kk,
-     #vertex.size=3,
-     vertex.frame.color=NA,
-     vertex.color="lightgreen",
-     vertex.label.color="grey20",
-     vertex.label.cex=3,
-     #edge.arrow.size=2,
-     edge.color="lightgreen",
-     edge.width=E(s_sim_strong)$weight/2,
-     edge.curved=.3,
-     edge.curved=curve_multiple(s_sim_strong),
-     main="Gesamtnetzwerk: Starke Beziehungen", 
-      sub = "Gewicht >= 6",
-      cex.main = 2, col.main= "black",
-      cex.sub = 2, font.sub = 3, col.sub = "black")
-
+d <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=T)
+d
 
 ```
-
-```{r Hervorhebung der populärsten Knoten im Netzwerk, fig.height=6, fig.width=10}
-
-# mit der Auswahl der Knoten lassen sich deren Rahmenfarben spezifisch angeben
-V(s_sim)[V(s_sim)$name == 6]$color <- "green"
-V(s_sim)[V(s_sim)$name == 18]$color <- "red"
-
-plot(s_sim,
-     layout=layout_in_circle,
-     vertex.size=degree(s_sim),
-     vertex.label.cex=2,
-     # vertex.frame.color=NA,(muss ausgeschaltet sein, damit die Knoten visualisiert werden können
-     edge.arrow.size=.5,
-     edge.color="grey80",
-     edge.width=E(s_sim)$weight/2, #halbiert den Wert der Gewichte, um eine bessere Darstellung zu ermöglichen
-     edge.curved=.2,
-     edge.curved=curve_multiple(s_sim),
-     )
-
-title("Gesamtnetzwerk vereinfacht", 
-      sub = "beliebteste Knoten in grün (stärkste Beziehungen) und rot (höchste Degrees)",
-      cex.main = 2, col.main= "black",
-      cex.sub = 2, font.sub = 3, col.sub = "black")
-
-
-```
-
-```{r Auslesen von Attributen}
-# Beispiel für das Vertex-Attribut Geschlecht
-vertex.attributes(s)$sex
-edge.attributes(s)$weight
-
-# wichtig: sind keine Werte gesetzt, dann behandelt igraph den Wert als NA, also not available. Das ist wichtig für die Kalkulation der Netzwerkbeziehungen. Complicated ist ein Wert der sich nur auf das Teilnetzwerk love bezieht und spielt deshalb für die anderen 2x76 Beziehungen keine Rolle. 
-
-```
-
 
 # Analyse der Teilnetzwerke (Marie Johnson)
 
