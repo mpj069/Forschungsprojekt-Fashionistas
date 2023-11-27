@@ -168,8 +168,6 @@ Die Verteilung des Gewichts lässt klare zentrale Knoten innerhalb des
 Gesamtnetzwerks erkennen. Diese Vorselektion ist später wichtig, um
 wichtige Knoten innerhalb des Netzwerks zu analysieren.
 
-**Nur starke Beziehungen im Gesamtnetzwerk**
-
 Für dieses Netzwerk sollen nun nur noch starke Beziehungen mit einem
 Gewicht von \>= 6 angezeigt werden. Damit wird das Netzwerk in ein neues
 Teilnetzwerk zerlegt, das nur noch aus starken Beziehungen besteht:
@@ -177,11 +175,11 @@ Teilnetzwerk zerlegt, das nur noch aus starken Beziehungen besteht:
 ```{r Starke Beziehungen im Gesamtnetzwerk, fig.height=6, fig.width=10}
 
 # erstellt ein Teilnetzwerk nur aus starken Beziehungen
-s_sim_strong <- subgraph.edges(s_sim, E(s_sim)[weight>=6]) 
-s_sim_strong
-edge.attributes(s_sim_strong)$weight
+d_sim_strong <- subgraph.edges(d_sim, E(d_sim)[weight>=6]) 
+d_sim_strong
+edge.attributes(d_sim_strong)$weight
 
-plot(s_sim_strong,
+plot(d_sim_strong,
      asp=0,
      layout=layout_with_kk,
      #vertex.size=3,
@@ -191,9 +189,9 @@ plot(s_sim_strong,
      vertex.label.cex=3,
      #edge.arrow.size=2,
      edge.color="lightgreen",
-     edge.width=E(s_sim_strong)$weight/2,
+     edge.width=E(d_sim_strong)$weight/2,
      edge.curved=.3,
-     edge.curved=curve_multiple(s_sim_strong),
+     edge.curved=curve_multiple(d_sim_strong),
      main="Gesamtnetzwerk: Starke Beziehungen", 
       sub = "Gewicht >= 6",
       cex.main = 2, col.main= "black",
@@ -205,19 +203,19 @@ plot(s_sim_strong,
 ```{r Hervorhebung der populärsten Knoten im Netzwerk, fig.height=6, fig.width=10}
 
 # mit der Auswahl der Knoten lassen sich deren Rahmenfarben spezifisch angeben
-V(s_sim)[V(s_sim)$name == 6]$color <- "green"
-V(s_sim)[V(s_sim)$name == 18]$color <- "red"
+V(d_sim)[V(d_sim)$name == 6]$color <- "green"
+V(d_sim)[V(d_sim)$name == 18]$color <- "red"
 
-plot(s_sim,
+plot(d_sim,
      layout=layout_in_circle,
-     vertex.size=degree(s_sim),
+     vertex.size=degree(d_sim),
      vertex.label.cex=2,
      # vertex.frame.color=NA,(muss ausgeschaltet sein, damit die Knoten visualisiert werden können
      edge.arrow.size=.5,
      edge.color="grey80",
-     edge.width=E(s_sim)$weight/2, #halbiert den Wert der Gewichte, um eine bessere Darstellung zu ermöglichen
+     edge.width=E(d_sim)$weight/2, #halbiert den Wert der Gewichte, um eine bessere Darstellung zu ermöglichen
      edge.curved=.2,
-     edge.curved=curve_multiple(s_sim),
+     edge.curved=curve_multiple(d_sim),
      )
 
 title("Gesamtnetzwerk vereinfacht", 
@@ -225,16 +223,13 @@ title("Gesamtnetzwerk vereinfacht",
       cex.main = 2, col.main= "black",
       cex.sub = 2, font.sub = 3, col.sub = "black")
 
-
 ```
 
 ```{r Auslesen von Attributen}
 # Beispiel für das Vertex-Attribut Geschlecht
 vertex.attributes(d)$sex
 edge.attributes(d)position
-
-# wichtig: sind keine Werte gesetzt, dann behandelt igraph den Wert als NA, also not available. Das ist wichtig für die Kalkulation der Netzwerkbeziehungen. Complicated ist ein Wert der sich nur auf das Teilnetzwerk love bezieht und spielt deshalb für die anderen 2x76 Beziehungen keine Rolle. 
-
+ 
 ```
 
 # Analyse der Teilnetzwerke 
