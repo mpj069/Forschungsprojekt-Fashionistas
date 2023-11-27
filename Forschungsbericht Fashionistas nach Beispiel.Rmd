@@ -168,10 +168,6 @@ Die Verteilung des Gewichts lässt klare zentrale Knoten innerhalb des
 Gesamtnetzwerks erkennen. Diese Vorselektion ist später wichtig, um
 wichtige Knoten innerhalb des Netzwerks zu analysieren.
 
-Für dieses Netzwerk sollen nun nur noch starke Beziehungen mit einem
-Gewicht von \>= 6 angezeigt werden. Damit wird das Netzwerk in ein neues
-Teilnetzwerk zerlegt, das nur noch aus starken Beziehungen besteht:
-
 ```{r Starke Beziehungen im Gesamtnetzwerk, fig.height=6, fig.width=10}
 
 # erstellt ein Teilnetzwerk nur aus starken Beziehungen
