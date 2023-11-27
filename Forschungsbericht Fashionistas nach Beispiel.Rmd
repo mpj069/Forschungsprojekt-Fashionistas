@@ -1834,7 +1834,7 @@ Claire Penga Amelie Eberl Marie Johnson Moritz Kronberger Zehra Sahin Sara Hadzi
 
 Aufteilung des Berichts:
 - Einleitung, Datenerhebung: Sara Hadzihasanovic\
-- Analyse und Interpretation des Gesamtnetzwerkes: Claire Penga\
+- Analyse und Interpretation des Gesamtnetzwerkes: Marie Johnson\ Claire Penga\
 - Analyse der Teilnetzwerke, Componenten, Cluster und Cliquen: Marie Johnson\
 - Zentralitätsmaße: Zehra Sahin\
 - Erklärungsmuster, Visualisierung, Diskussion: Claire Penga\
